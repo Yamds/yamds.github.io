@@ -64,8 +64,8 @@ img {
 }
 
 .material .checkbox .checked {
-    background-color: #363a4f;
-    border: 1px solid #f5bde6;
+    background-color: #494d64;
+    border: 1px solid #8bd5ca;
     transition: all 0.2s ease;
 }
 

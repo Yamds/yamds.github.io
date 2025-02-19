@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@
     <!-- 公开处刑，555不要啊 -->
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <div class="container-fluid" id="app">
         <div class="row">
@@ -27,8 +29,10 @@
                 <!-- 导航栏 -->
                 <div class="guide col-md-12">
                     <ul class="nav nav-tabs">
-                        <li role="presentation" @click="focus_web = 1" :class="focus_web == 1 ? 'active' : ''"><a href="#">查询材料</a></li>
-                        <li role="presentation" @click="focus_web = 2" :class="focus_web == 2 ? 'active' : ''"><a href="#">说明</a></li>
+                        <li role="presentation" @click="focus_web = 1" :class="focus_web == 1 ? 'active' : ''"><a
+                                href="#">查询材料</a></li>
+                        <li role="presentation" @click="focus_web = 2" :class="focus_web == 2 ? 'active' : ''"><a
+                                href="#">说明</a></li>
                         <!-- <li role="presentation"><a href="#" style="color: #cad3f5;">装备模拟</a></li> -->
                     </ul>
                 </div>
@@ -44,7 +48,9 @@
                                 <span @click="selectAll('等阶')">
                                     <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
                                 </span>
-                                <span v-for="item in material_level" :class="selected.等阶.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('等阶', item.名字)">
+                                <span v-for="item in material_level"
+                                    :class="selected.等阶.includes(item.名字) ? 'checked' : 'unchecked'"
+                                    @click="selectMaterial('等阶', item.名字)">
                                     <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
                                 </span>
                             </div>
@@ -53,7 +59,9 @@
                                 <span @click="selectAll('种类')">
                                     <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
                                 </span>
-                                <span v-for="item in material_type" :class="selected.种类.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('种类', item.名字)">
+                                <span v-for="item in material_type"
+                                    :class="selected.种类.includes(item.名字) ? 'checked' : 'unchecked'"
+                                    @click="selectMaterial('种类', item.名字)">
                                     <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
                                 </span>
                             </div>
@@ -66,7 +74,9 @@
                                 <span @click="andor = !andor" :class="andor ? 'checked' : 'unchecked'">
                                     <img src="/img/attr/maoxianrenwu1_3.png" alt="">包含
                                 </span>
-                                <span v-for="item in material_attribute" :class="selected.属性.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('属性', item.名字)">
+                                <span v-for="item in material_attribute"
+                                    :class="selected.属性.includes(item.名字) ? 'checked' : 'unchecked'"
+                                    @click="selectMaterial('属性', item.名字)">
                                     <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
                                 </span>
                             </div>
@@ -75,13 +85,15 @@
                         <div class="material-search col-md-11">
                             <div class="form-group">
                                 <label for="material">材料名称</label>
-                                <input type="text" v-model="search_input" class="form-control" id="material" placeholder="请输入材料名称">
+                                <input type="text" v-model="search_input" class="form-control" id="material"
+                                    placeholder="请输入材料名称">
                             </div>
                         </div>
                         <!-- 搜索材料的展示框列表 -->
                         <div class="material-list col-md-11">
                             <ul>
-                                <li class="col-md-4" v-for="item in materialList" @click="showItem(item)" v-show="
+                                <li class="col-md-4" v-for="item in materialList" @click="showItem(item)"
+                                    v-show="
                                         item.名称.includes(search_input) && 
                                         selected.等阶.includes(item.等阶) && 
                                         selected.种类.includes(item.类型) && 
@@ -91,18 +103,19 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
                 <!-- 展示材料 -->
                 <div v-if="focus_web == 1" class="material-show col-md-6">
                     <div class="row">
                         <div class="col-md-6" v-for="(item, item_index) in show_item.item" :key="'item-' + item_index">
                             <transition name="fade" mode="out-in">
-                                <table v-if="item.名称" :key="'item-' + item_index + '-' + version[item_index]" style="margin-bottom: 20px;">
+                                <table v-if="item.名称" :key="'item-' + item_index + '-' + version[item_index]"
+                                    style="margin-bottom: 20px;">
                                     <tr v-for="(qwq, index) in Array(7).fill()">
-                                        <!-- 1. 名称 -->   
+                                        <!-- 1. 名称 -->
                                         <td v-if="index == 0" class="name" colspan="3">
                                             <h4 style="font-weight: bold;">{{item.名称}}</h4>
                                         </td>
@@ -130,7 +143,8 @@
                                         </td>
                                         <td v-if="index == 4" colspan="2">
                                             <span v-for="item in item.属性">
-                                                <img style="margin-right: 2px;" :src="`/img/attr/${material_attribute.find(a => a.名字 === item)?.图标 || ''}.png`"
+                                                <img style="margin-right: 2px;"
+                                                    :src="`/img/attr/${material_attribute.find(a => a.名字 === item)?.图标 || ''}.png`"
                                                     alt="">
                                                 <span style="margin-right: 4px;">{{item + " "}}</span>
                                             </span>
@@ -146,38 +160,44 @@
                                         <td v-if="index == 6">
                                             <span>星级</span>
                                         </td>
-                                        <td v-if="index == 6" @click="setValue(item_index, 1)" :class="selectValue(item_index) == 1 ? 'value-selected' : 'value-unselected'">
+                                        <td v-if="index == 6" @click="setValue(item_index, 1)"
+                                            :class="selectValue(item_index) == 1 ? 'value-selected' : 'value-unselected'">
                                             <span>完整数值</span>
                                         </td>
-                                        <td v-if="index == 6" @click="setValue(item_index, 2)" :class="selectValue(item_index) == 2 ? 'value-selected' : 'value-unselected'">
+                                        <td v-if="index == 6" @click="setValue(item_index, 2)"
+                                            :class="selectValue(item_index) == 2 ? 'value-selected' : 'value-unselected'">
                                             <span>平均数值(格)</span>
                                         </td>
                                     </tr>
                                     <!-- 完整数值的五行 -->
-                                    <tr class="level-attr" v-if="selectValue(item_index) == 1" v-for="(item) in Object.entries(item.星级属性)">
+                                    <tr class="level-attr" v-if="selectValue(item_index) == 1"
+                                        v-for="(item) in Object.entries(item.星级属性)">
                                         <td>
                                             <span>{{item[0]}}</span>
                                         </td>
                                         <td colspan="2">
                                             <span v-for="attr in Object.entries(item[1])">
-                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`" alt="">
+                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`"
+                                                    alt="">
                                                 <span>{{attr[1]}}</span>
                                             </span>
                                         </td>
                                     </tr>
                                     <!-- 平均数值的五行 -->
-                                    <tr class="level-attr" v-if="selectValue(item_index) == 2" v-for="item_attr in Object.entries(item.星级属性)">
+                                    <tr class="level-attr" v-if="selectValue(item_index) == 2"
+                                        v-for="item_attr in Object.entries(item.星级属性)">
                                         <td>
                                             <span>{{item_attr[0]}}</span>
                                         </td>
                                         <td colspan="2">
                                             <span v-for="attr in Object.entries(item_attr[1])">
-                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`" alt="">
+                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`"
+                                                    alt="">
                                                 <span>{{parseFloat((attr[1] / item.占位).toFixed(1))}}</span>
                                             </span>
                                         </td>
                                     </tr>
-                                    
+
                                     <tr v-for="(qwq, index) in Array(4).fill()">
                                         <!-- 13. 技能 -->
                                         <td v-if="index == 0">
@@ -260,10 +280,10 @@
                             material: '',
                             materialList: data, // 使用获取的数据
                             search_input: "",
-                            show_item: {pos: 1, item: {item1: {}, item2: {}}, item1_selected: 1, item2_selected: 1},
+                            show_item: { pos: 1, item: { item1: {}, item2: {} }, item1_selected: 1, item2_selected: 1 },
                             selected: {
                                 "种类": ["丝绳", "布匹", "碎块", "残骸", "兽核"],
-                                "属性": ["生命", "体力", "耐力", "攻击", "物暴击", "物暴伤", "物穿", "攻速", "法强", "法爆击", "法暴伤", "法穿", "治疗", "物抗", "魔抗", "卸力", "嘲讽", "格挡", "充能"],
+                                "属性": ["生命", "体力", "耐力", "攻击", "物暴击", "物暴伤", "物穿", "攻速", "法强", "法暴击", "法暴伤", "法穿", "治疗", "物抗", "魔抗", "卸力", "嘲讽", "格挡", "充能"],
                                 "等阶": ["一阶", "二阶", "三阶"]
                             },
                             andor: false,
@@ -321,7 +341,7 @@
                                 "名字": "法强",
                                 "图标": "magic"
                             }, {
-                                "名字": "法爆击",
+                                "名字": "法暴击",
                                 "图标": "magicdouble1"
                             }, {
                                 "名字": "法暴伤",
@@ -401,7 +421,7 @@
                         },
                         // 展示的材料
                         showItem(item) {
-                            if(this.show_item.pos == 1) {
+                            if (this.show_item.pos == 1) {
                                 this.show_item.item.item1 = item;
                                 this.version.item1++;
                                 this.show_item.pos = 2;
@@ -413,17 +433,17 @@
                         },
                         // 选择完整数值或平均数值
                         selectValue(index) {
-                            if(index == "item1") {
+                            if (index == "item1") {
                                 return this.show_item.item1_selected;
-                            } else if(index == "item2") {
+                            } else if (index == "item2") {
                                 return this.show_item.item2_selected;
                             }
                         },
                         // 设置完整数值或平均数值
                         setValue(index, value) {
-                            if(index == "item1") {
+                            if (index == "item1") {
                                 this.show_item.item1_selected = value;
-                            } else if(index == "item2") {
+                            } else if (index == "item2") {
                                 this.show_item.item2_selected = value;
                             }
                         }
@@ -438,4 +458,5 @@
     <!-- <script src="pre/layui/layui.js"></script> -->
 
 </body>
+
 </html>

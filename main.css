@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #cad3f5;
+}
+
+body {
+    background-color: #24273a;
+
+}
+
+a {
+    color: #cad3f5;
+}
+input {
+    background-color: #24273a;
+    color: #cad3f5;
+}
+
+.material-list li img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    vertical-align: middle;
+
+}
+
+img {
+    image-rendering: crisp-edges;
+    /* 保持锐利边缘 */
+    image-rendering: pixelated;
+    /* 适合像素风格图片 */
+}
+.guide li a{
+    color: #cad3f5;
+}
+
+.material .checkbox span {
+    display: inline-flex;
+    /* 使 label 内部元素水平排列 */
+    align-items: center;
+    /* 垂直居中对齐 */
+    gap: 4px;
+    /* 设置元素之间的间距 */
+    margin-right: 20px;
+    cursor: pointer;
+    border: 1px solid #c6a0f6;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    user-select: none;
+    /* 无法选中 */
+}
+
+.material .checkbox span img {
+    width: 16px;
+    height: 16px;
+}
+
+.col-custom-offset-1 {
+    margin-left: 3%;
+}
+
+.material .checkbox .checked {
+    background-color: #363a4f;
+    border: 1px solid #f5bde6;
+    transition: all 0.2s ease;
+}
+
+.material .checkbox .unchecked {
+    background-color: #1e2030;
+    border: 1px solid #c6a0f6;
+    transition: all 0.2s ease;
+}
+.material .checkbox .unchecked:hover {
+    background-color: #ffffff15;
+    transition: all 0.2s ease;
+}
+
+.material-list li {
+    cursor: pointer;
+    user-select: none;
+    /* 无法选中 */
+}
+
+.material-show table {
+    width: 100%;
+}
+
+.material-show table tr td {
+    padding: 7px;
+}
+.material-show table tr td span {
+    line-height: 100%;
+    font-size: 16px;
+}
+/* 设置偶数行背景 */
+.material-show table tr:nth-child(2n) td {
+    background-color: #494d64;
+}
+/* 设置奇数行背景 */
+.material-show table tr:nth-child(2n-1) td {
+    background-color: #363a4f;
+}
+/* 设置第一行和第二行文字居中 */
+.material-show table tr:nth-child(1),
+.material-show table tr:nth-child(2) {
+    text-align: center;
+}
+/* 设置第二行图片宽度 */
+.material-show table tr:nth-child(2) img {
+    width: 60%;
+    padding: 5% 0;
+}
+/* 设置非一二行 第一列宽度 */
+.material-show table tr:not(:nth-child(1)):not(:nth-child(2)) td:nth-child(1) {
+    width: 25%;
+    padding-left: 10px;
+}
+/* 设置非一二行 图片宽度 */
+.material-show table tr:not(:nth-child(1)):not(:nth-child(2)) img {
+    width: 16px;
+}
+/* 完整数值和平均数值的样式 */
+.value-selected {
+    text-align: center;
+    background-color: #494d64 !important;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.value-unselected {
+    text-align: center;
+    background-color: #363A4F !important;
+    cursor: pointer;
+}
+/* 设置星级属性表格的样式 */
+.material-show table tr.level-attr td:nth-child(2)>span {
+    display: inline-block;
+    margin-right: 10px;
+    width: 15%;
+}
+/* 淡入淡出动画 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: all 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* 如果希望左右滑动效果 */
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.2s ease;
+}
+
+.slide-enter-from {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.slide-leave-to {
+    opacity: 0;
+    transform: translateX(-20px);
+}

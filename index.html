@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>营火图鉴</title>
+    <link rel="icon" href="/img/icon.png">
+
+    <link rel="stylesheet" href="pre/bootstrap.css">
+    <script src="pre/jquery.js"></script>
+    <script src="pre/bootstrap.js"></script>
+    <script src="pre/Vue.js"></script>
+    <!-- <link rel="stylesheet" href="pre/layui/css/layui.css"> -->
+    <!-- 代码一坨屎，快跑！！！ -->
+    <!-- 代码一坨屎，快跑！！！ -->
+    <!-- 代码一坨屎，快跑！！！ -->
+    <!-- 代码一坨屎，快跑！！！ -->
+    <!-- 代码一坨屎，快跑！！！ -->
+    <!-- 公开处刑，555不要啊 -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container-fluid" id="app">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h1 style="margin-bottom: 40px;">营火图鉴</h1>
+                <!-- 导航栏 -->
+                <div class="guide col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" @click="focus_web = 1" :class="focus_web == 1 ? 'active' : ''"><a href="#">查询材料</a></li>
+                        <li role="presentation" @click="focus_web = 2" :class="focus_web == 2 ? 'active' : ''"><a href="#">说明</a></li>
+                        <!-- <li role="presentation"><a href="#" style="color: #cad3f5;">装备模拟</a></li> -->
+                    </ul>
+                </div>
+                <!-- 查询材料 -->
+                <div v-if="focus_web == 1" class="material col-md-6">
+                    <div class="row">
+                        <!-- 类型筛选 -->
+                        <div class="material-type col-md-11">
+                            <!-- 种类 -->
+                            <h3>材料筛选</h3>
+                            <div class="checkbox">
+                                <h4>等阶</h4>
+                                <span @click="selectAll('等阶')">
+                                    <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
+                                </span>
+                                <span v-for="item in material_level" :class="selected.等阶.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('等阶', item.名字)">
+                                    <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
+                                </span>
+                            </div>
+                            <div class="checkbox">
+                                <h4>种类</h4>
+                                <span @click="selectAll('种类')">
+                                    <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
+                                </span>
+                                <span v-for="item in material_type" :class="selected.种类.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('种类', item.名字)">
+                                    <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
+                                </span>
+                            </div>
+                            <!-- 属性 -->
+                            <div class="checkbox">
+                                <h4>属性</h4>
+                                <span @click="selectAll('属性')">
+                                    <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
+                                </span>
+                                <span @click="andor = !andor" :class="andor ? 'checked' : 'unchecked'">
+                                    <img src="/img/attr/maoxianrenwu1_3.png" alt="">包含
+                                </span>
+                                <span v-for="item in material_attribute" :class="selected.属性.includes(item.名字) ? 'checked' : 'unchecked'" @click="selectMaterial('属性', item.名字)">
+                                    <img :src="`/img/attr/${item.图标}.png`" alt="">{{item.名字}}
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 搜索材料 -->
+                        <div class="material-search col-md-11">
+                            <div class="form-group">
+                                <label for="material">材料名称</label>
+                                <input type="text" v-model="search_input" class="form-control" id="material" placeholder="请输入材料名称">
+                            </div>
+                        </div>
+                        <!-- 搜索材料的展示框列表 -->
+                        <div class="material-list col-md-11">
+                            <ul>
+                                <li class="col-md-4" v-for="item in materialList" @click="showItem(item)" v-show="
+                                        item.名称.includes(search_input) && 
+                                        selected.等阶.includes(item.等阶) && 
+                                        selected.种类.includes(item.类型) && 
+                                        (!andor ? item.属性.some(attr => selected.属性.includes(attr)) : selected.属性.every(attr => item.属性.includes(attr)))">
+                                    <img :src="`/img/all/${item.图标}.png`" alt="{{item.名称}}图标">
+                                    <span>{{item.名称}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <!-- 展示材料 -->
+                <div v-if="focus_web == 1" class="material-show col-md-6">
+                    <div class="row">
+                        <div class="col-md-6" v-for="(item, item_index) in show_item.item" :key="'item-' + item_index">
+                            <transition name="fade" mode="out-in">
+                                <table v-if="item.名称" :key="'item-' + item_index + '-' + version[item_index]" style="margin-bottom: 20px;">
+                                    <tr v-for="(qwq, index) in Array(7).fill()">
+                                        <!-- 1. 名称 -->   
+                                        <td v-if="index == 0" class="name" colspan="3">
+                                            <h4 style="font-weight: bold;">{{item.名称}}</h4>
+                                        </td>
+                                        <!-- 2. 图片 -->
+                                        <td v-if="index == 1" class="img" colspan="3">
+                                            <img :src="`/img/all/${item.图标}.png`" alt="">
+                                        </td>
+                                        <!-- 3. 等阶 -->
+                                        <td v-if="index == 2">
+                                            <span>等阶</span>
+                                        </td>
+                                        <td v-if="index == 2" colspan="2">
+                                            <span>{{item.等阶}}</span>
+                                        </td>
+                                        <!-- 4. 种类 -->
+                                        <td v-if="index == 3">
+                                            <span>种类</span>
+                                        </td>
+                                        <td v-if="index == 3" colspan="2">
+                                            <span>{{item.类型}}</span>
+                                        </td>
+                                        <!-- 5. 属性 -->
+                                        <td v-if="index == 4">
+                                            <span>属性</span>
+                                        </td>
+                                        <td v-if="index == 4" colspan="2">
+                                            <span v-for="item in item.属性">
+                                                <img style="margin-right: 2px;" :src="`/img/attr/${material_attribute.find(a => a.名字 === item)?.图标 || ''}.png`"
+                                                    alt="">
+                                                <span style="margin-right: 4px;">{{item + " "}}</span>
+                                            </span>
+                                        </td>
+                                        <!-- 6. 占位 -->
+                                        <td v-if="index == 5">
+                                            <span>占位</span>
+                                        </td>
+                                        <td v-if="index == 5" colspan="2">
+                                            <span>{{item.占位}}格</span>
+                                        </td>
+                                        <!-- 7. 星级 -->
+                                        <td v-if="index == 6">
+                                            <span>星级</span>
+                                        </td>
+                                        <td v-if="index == 6" @click="setValue(item_index, 1)" :class="selectValue(item_index) == 1 ? 'value-selected' : 'value-unselected'">
+                                            <span>完整数值</span>
+                                        </td>
+                                        <td v-if="index == 6" @click="setValue(item_index, 2)" :class="selectValue(item_index) == 2 ? 'value-selected' : 'value-unselected'">
+                                            <span>平均数值(格)</span>
+                                        </td>
+                                    </tr>
+                                    <!-- 完整数值的五行 -->
+                                    <tr class="level-attr" v-if="selectValue(item_index) == 1" v-for="(item) in Object.entries(item.星级属性)">
+                                        <td>
+                                            <span>{{item[0]}}</span>
+                                        </td>
+                                        <td colspan="2">
+                                            <span v-for="attr in Object.entries(item[1])">
+                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`" alt="">
+                                                <span>{{attr[1]}}</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <!-- 平均数值的五行 -->
+                                    <tr class="level-attr" v-if="selectValue(item_index) == 2" v-for="item_attr in Object.entries(item.星级属性)">
+                                        <td>
+                                            <span>{{item_attr[0]}}</span>
+                                        </td>
+                                        <td colspan="2">
+                                            <span v-for="attr in Object.entries(item_attr[1])">
+                                                <img :src="`/img/attr/${material_attribute.find(a => a.名字 === attr[0])?.图标 || ''}.png`" alt="">
+                                                <span>{{parseFloat((attr[1] / item.占位).toFixed(1))}}</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr v-for="(qwq, index) in Array(4).fill()">
+                                        <!-- 13. 技能 -->
+                                        <td v-if="index == 0">
+                                            <span>技能</span>
+                                        </td>
+                                        <td v-if="index == 0" colspan="2">
+                                            <span>{{item.技能}}</span>
+                                        </td>
+                                        <!-- 14. 获取途径 -->
+                                        <td v-if="index == 1">
+                                            <span>获取途径</span>
+                                        </td>
+                                        <td v-if="index == 1" colspan="2">
+                                            <span>{{item.获取途径.join(", ")}}</span>
+                                        </td>
+                                        <!-- 15. 功勋 -->
+                                        <td v-if="index == 2">
+                                            <span>功勋</span>
+                                        </td>
+                                        <td v-if="index == 2" colspan="2">
+                                            <span>{{item.功勋}}</span>
+                                        </td>
+                                        <!-- 16. 参考价格 -->
+                                        <td v-if="index == 3">
+                                            <span>参考价格</span>
+                                        </td>
+                                        <td v-if="index == 3" colspan="2">
+                                            <span>{{item.功勋 * 30}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </transition>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="focus_web == 2" class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>说明</h3>
+                            <p>
+                                课余编写，代码一坨，如有错误，欢迎指正qwq
+                            </p>
+                            <p>
+                                材料属性全部来自JLkong大佬发在萌新群(481423636)里的《[营火]一岛材料图鉴》，感谢JLkong大佬！<br>
+                                材料图标全部来自营火资源包,请勿传播及商用
+                            </p>
+                            <p>
+                                属性筛选中的"包含"按钮，用来查找同时拥有多个属性的材料<br>
+                                例如你选中物暴击和物暴伤，那么所有同时含有物暴击和物暴伤的材料都会被筛选出来<br>
+                            </p>
+                            <p>
+                                技能暂时没有具体数值qaq <br>
+                                参考价格为功勋*30，但是具体价值会随稀有度变化，仅供参考
+                            </p>
+                            <p>
+                                非常好图鉴，💕来自营火<br>
+                                @Yamds(Kumiko_chann)
+                            </p>
+                        </div>
+                        <div class="col-md-6"></div>
+                    </div>
+                </div>
+                <!-- 装备模拟 -->
+                <div class="equip">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 在Vue实例外加载数据
+        fetch('materials/materials.json')
+            .then(response => response.json())
+            .then(data => {
+                const obj = {
+                    data() {
+                        return {
+                            focus_web: 1,
+                            material: '',
+                            materialList: data, // 使用获取的数据
+                            search_input: "",
+                            show_item: {pos: 1, item: {item1: {}, item2: {}}, item1_selected: 1, item2_selected: 1},
+                            selected: {
+                                "种类": ["丝绳", "布匹", "碎块", "残骸", "兽核"],
+                                "属性": ["生命", "体力", "耐力", "攻击", "物暴击", "物暴伤", "物穿", "攻速", "法强", "法爆击", "法暴伤", "法穿", "治疗", "物抗", "魔抗", "卸力", "嘲讽", "格挡", "充能"],
+                                "等阶": ["一阶", "二阶", "三阶"]
+                            },
+                            andor: false,
+                            material_level: [{
+                                "名字": "一阶",
+                                "图标": "level1"
+                            }, {
+                                "名字": "二阶",
+                                "图标": "level2"
+                            }, {
+                                "名字": "三阶",
+                                "图标": "level3"
+                            }],
+                            material_type: [{
+                                "名字": "丝绳",
+                                "图标": "sisheng"
+                            }, {
+                                "名字": "布匹",
+                                "图标": "bupi"
+                            }, {
+                                "名字": "碎块",
+                                "图标": "suikuai"
+                            }, {
+                                "名字": "残骸",
+                                "图标": "canhai"
+                            }, {
+                                "名字": "兽核",
+                                "图标": "shouhe"
+                            }],
+                            material_attribute: [{
+                                "名字": "生命",
+                                "图标": "life"
+                            }, {
+                                "名字": "体力",
+                                "图标": "mana"
+                            }, {
+                                "名字": "耐力",
+                                "图标": "mana_restores"
+                            }, {
+                                "名字": "攻击",
+                                "图标": "damage"
+                            }, {
+                                "名字": "物暴击",
+                                "图标": "double1"
+                            }, {
+                                "名字": "物暴伤",
+                                "图标": "double2"
+                            }, {
+                                "名字": "物穿",
+                                "图标": "penetrates1"
+                            }, {
+                                "名字": "攻速",
+                                "图标": "attackspeed"
+                            }, {
+                                "名字": "法强",
+                                "图标": "magic"
+                            }, {
+                                "名字": "法爆击",
+                                "图标": "magicdouble1"
+                            }, {
+                                "名字": "法暴伤",
+                                "图标": "magicdouble2"
+                            }, {
+                                "名字": "法穿",
+                                "图标": "penetrates2"
+                            }, {
+                                "名字": "治疗",
+                                "图标": "treatment"
+                            }, {
+                                "名字": "物抗",
+                                "图标": "defense1"
+                            }, {
+                                "名字": "魔抗",
+                                "图标": "defense2"
+                            }, {
+                                "名字": "卸力",
+                                "图标": "xieli"
+                            }, {
+                                "名字": "嘲讽",
+                                "图标": "chaofeng"
+                            }, {
+                                "名字": "格挡",
+                                "图标": "gedang"
+                            }, {
+                                "名字": "充能",
+                                "图标": "energy"
+                            }],
+                            version: { item1: 0, item2: 0 }
+                        }
+                    },
+                    methods: {
+                        // 全选
+                        selectAll(type) {
+                            if (type == '种类') {
+                                if (this.selected[type].length == 0) {
+                                    this.selected.种类 = this.material_type.map(item => item.名字);
+                                } else {
+                                    this.selected.种类 = [];
+                                }
+                            } else if (type == '等阶') {
+                                if (this.selected[type].length == 0) {
+                                    this.selected.等阶 = this.material_level.map(item => item.名字);
+                                } else {
+                                    this.selected.等阶 = [];
+                                }
+                            } else if (type == '属性') {
+                                if (this.selected[type].length == 0) {
+                                    this.selected.属性 = this.material_attribute.map(item => item.名字);
+                                } else {
+                                    this.selected.属性 = [];
+                                }
+                            }
+                        },
+                        // 单选
+                        selectMaterial(type, name) {
+                            if (type == '种类') {
+                                if (this.selected.种类.includes(name)) {
+                                    this.selected.种类 = this.selected.种类.filter(item => item !== name);
+                                } else {
+                                    this.selected.种类.push(name);
+                                }
+                            } else if (type == '属性') {
+                                if (this.selected.属性.includes(name)) {
+                                    this.selected.属性 = this.selected.属性.filter(item => item !== name);
+                                } else {
+                                    this.selected.属性.push(name);
+                                }
+                            } else if (type == '等阶') {
+                                if (this.selected.等阶.includes(name)) {
+                                    this.selected.等阶 = this.selected.等阶.filter(item => item !== name);
+                                } else {
+                                    this.selected.等阶.push(name);
+                                }
+                            }
+                        },
+                        // 展示的材料
+                        showItem(item) {
+                            if(this.show_item.pos == 1) {
+                                this.show_item.item.item1 = item;
+                                this.version.item1++;
+                                this.show_item.pos = 2;
+                            } else {
+                                this.show_item.item.item2 = item;
+                                this.version.item2++;
+                                this.show_item.pos = 1;
+                            }
+                        },
+                        // 选择完整数值或平均数值
+                        selectValue(index) {
+                            if(index == "item1") {
+                                return this.show_item.item1_selected;
+                            } else if(index == "item2") {
+                                return this.show_item.item2_selected;
+                            }
+                        },
+                        // 设置完整数值或平均数值
+                        setValue(index, value) {
+                            if(index == "item1") {
+                                this.show_item.item1_selected = value;
+                            } else if(index == "item2") {
+                                this.show_item.item2_selected = value;
+                            }
+                        }
+                    }
+                }
+                var app = Vue.createApp(obj).mount('#app')
+            })
+            .catch(error => {
+                console.error('加载数据失败:', error);
+            });
+    </script>
+    <!-- <script src="pre/layui/layui.js"></script> -->
+
+</body>
+</html>

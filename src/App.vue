@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-  import '@/assets/css/theme.scss'
+  import '../../assets/css/theme.scss'
   import 'bootstrap/dist/css/bootstrap.css';
   import NavBar from './components/NavBar.vue'
   import MaterialsSearch from './components/materials-search/MaterialsSearch.vue'

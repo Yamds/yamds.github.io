@@ -14,7 +14,7 @@
 
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
-  import emitter from '@/utils/emitter';
+  import emitter from '../../utils/emitter';
 
   let materials_input = ref("")
 

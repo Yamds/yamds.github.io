@@ -44,9 +44,9 @@
 
 <script lang="ts" setup>
   import { ref, computed, watch, onMounted } from "vue"
-  import material from "@/assets/json/material_type.json"
-  import emitter from "@/utils/emitter";
-  import { type MaterialsTypesInter } from '@/types'
+  import material from "../../assets/json/material_type.json"
+  import emitter from "../../utils/emitter";
+  import { type MaterialsTypesInter } from '../../types'
 
   // 属性
   let {material_level, material_type, material_attribute} = material

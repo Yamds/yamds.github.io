@@ -149,10 +149,10 @@
 </script>
 
 <script lang="ts" setup>
-  import emitter from '@/utils/emitter';
-  import { type MaterialsInter } from '@/types'
+  import emitter from '../../utils/emitter';
+  import { type MaterialsInter } from '../../types'
   import { ref } from 'vue';
-  import materialTypes from '@/assets/json/material_type.json'
+  import materialTypes from '../../assets/json/material_type.json'
 
   // 属性
   let {material_level, material_type, material_attribute} = materialTypes

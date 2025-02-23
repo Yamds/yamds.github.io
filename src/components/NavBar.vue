@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { ref, watch } from "vue";
-  import emitter from "@/utils/emitter";
+  import emitter from "../utils/emitter";
   let active_web = ref(1)
   
   // 向app传递选择的web

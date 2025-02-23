@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-  import '../../assets/css/theme.scss'
+  import './assets/css/theme.scss'
   import 'bootstrap/dist/css/bootstrap.css';
   import NavBar from './components/NavBar.vue'
   import MaterialsSearch from './components/materials-search/MaterialsSearch.vue'
@@ -47,7 +47,7 @@
 
   // 预加载图片
   function preloadImages() {
-    const images = import.meta.glob('@/assets/img/*.(png|jpe?g|svg)', { eager: true })
+    const images = import.meta.glob('./assets/img/*.(png|jpe?g|svg)', { eager: true })
     const imagePromises = Object.keys(images).map((key) => {
       return new Promise((resolve, reject) => {
         const img = new Image()

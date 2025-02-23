@@ -23,7 +23,7 @@
   import { ref } from 'vue'
   import materials from "../../assets/json/materials.json"
   import emitter from "../../utils/emitter";
-  import { type MaterialsTypesInter } from '@/types'
+  import { type MaterialsTypesInter } from '../../types'
   // 属性
   let materialList = materials
   let search_input = ref('')

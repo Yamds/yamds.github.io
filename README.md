@@ -1,6 +1,8 @@
-# hello_vue3
+# foacraft-tool
 
-This template should help get you started developing with Vue 3 in Vite.
+This is my Vue 3 practice project, a material catalog website for the Minecraft RPG server 《Campfire (Foacraft)》. As a complete beginner in front-end development, I created this site to help players easily look up in-game materials and their details. If you notice any issues or have suggestions for improvement, feel free to point them out! Your feedback is greatly appreciated as I continue learning and improving my skills. :)
+
+这是我的 Vue 3 练习项目，一个为 Minecraft RPG 服务器 《营火（Foacraft）》 打造的材料图鉴查询网站。作为前端开发的纯新手，我搭建这个网站的目的是方便玩家快速查询游戏内的材料及其详细信息。如果大佬们发现任何问题或有改进建议，欢迎随时指出！你们的反馈对我来说非常宝贵，我会继续努力学习并提升自己的技能。(From DeepSeek (笑
 
 ## Recommended IDE Setup
 

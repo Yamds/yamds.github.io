@@ -3,33 +3,33 @@
   <div class="checkbox">
     <h4>等阶</h4>
     <span @click="selectAll('level')" :class="selected_all[0]?'selected':'unselected'">
-        <img src="/src/assets/img/attr/maoxianrenwu1_3.png" alt="">全选
+        <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
     </span>
     <span v-for="level in material_level" :key="level.id" @click="selectSingle('level', level.name)" :class="selected.level.includes(level.name)?'selected':'unselected'">
-      <img :src="`/src/assets/img/attr/${level.icon}.png`">
+      <img :src="`/img/attr/${level.icon}.png`">
       <span>{{ level.name }}</span>
     </span>
   </div>
   <div class="checkbox">
     <h4>类型</h4>
     <span @click="selectAll('type')" :class="selected_all[1]?'selected':'unselected'">
-        <img src="/src/assets/img/attr/maoxianrenwu1_3.png" alt="">全选
+        <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
     </span>
     <span v-for="type in material_type" :key="type.id" @click="selectSingle('type', type.name)" :class="selected.type.includes(type.name)?'selected':'unselected'">
-      <img :src="`/src/assets/img/attr/${type.icon}.png`">
+      <img :src="`/img/attr/${type.icon}.png`">
       <span>{{ type.name }}</span>
     </span>
   </div>
   <div class="checkbox">
     <h4>属性</h4>
     <span @click="selectAll('attribute')" :class="selected_all[2]?'selected':'unselected'">
-        <img src="/src/assets/img/attr/maoxianrenwu1_3.png" alt="">全选
+        <img src="/img/attr/maoxianrenwu1_3.png" alt="">全选
     </span>
     <span @click="andor = !andor" :class="andor?'selected':'unselected'">
-        <img src="/src/assets/img/attr/maoxianrenwu1_3.png" alt="">包含
+        <img src="/img/attr/maoxianrenwu1_3.png" alt="">包含
     </span>
     <span v-for="attribute in material_attribute" :key="attribute.id" @click="selectSingle('attribute', attribute.name)" :class="selected.attribute.includes(attribute.name)?'selected':'unselected'">
-      <img :src="`/src/assets/img/attr/${attribute.icon}.png`">
+      <img :src="`/img/attr/${attribute.icon}.png`">
       <span>{{ attribute.name }}</span>
     </span>
   </div>

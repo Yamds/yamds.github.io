@@ -7,7 +7,7 @@
                 selected.level.includes(item.level) && 
                 selected.type.includes(item.type) && 
                 (!andor ? item.attribute.some((attr: string) => selected.attribute.includes(attr)) : selected.attribute.every((attr: string) => item.attribute.includes(attr)))">
-            <img :src="`/src/assets/img/all/${item.icon}.png`" alt="{{item.name}}图标">
+            <img :src="`/img/all/${item.icon}.png`">
             <span>{{item.name}}</span>
         </li>
     </ul>
@@ -24,6 +24,7 @@
   import materials from "../../assets/json/materials.json"
   import emitter from "../../utils/emitter";
   import { type MaterialsTypesInter } from '../../types'
+
   // 属性
   let materialList = materials
   let search_input = ref('')
@@ -61,15 +62,13 @@
     cursor: pointer;
   }
   li:hover >span {
-    color: var(--ctp-custom
-    ) !important;
+    color: var(--ctp-custom) !important;
   }
   li img {
     width: 32px;
     height: 32px;
     margin-right: 10px;
     vertical-align: middle;
-    
   }
   li span {
     vertical-align: middle;

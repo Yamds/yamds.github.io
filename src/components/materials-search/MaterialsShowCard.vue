@@ -13,7 +13,7 @@
             <!-- 2. 图标 -->
             <tr>
               <td class="img" colspan="3">
-                  <img :src="`/src/assets/img/all/${item.icon}.png`" alt="">
+                  <img :src="`/img/all/${item.icon}.png`" alt="">
               </td>
             </tr>
             <!-- 3. 等阶 -->
@@ -42,7 +42,7 @@
               <td colspan="2">
                   <span v-for="attr in item.attribute">
                       <img style="margin-right: 2px;"
-                          :src="`/src/assets/img/attr/${material_attribute.find(a => a.name === attr)?.icon || ''}.png`"
+                          :src="`/img/attr/${material_attribute.find(a => a.name === attr)?.icon || ''}.png`"
                           alt="">
                       <span style="margin-right: 4px;">{{attr + " "}}</span>
                   </span>
@@ -79,7 +79,7 @@
               </td>
               <td colspan="2">
                   <span v-for="attr in Object.entries(star)">
-                      <img :src="`/src/assets/img/attr/${material_attribute.find(a => a.name === attr[0])?.icon || ''}.png`"
+                      <img :src="`/img/attr/${material_attribute.find(a => a.name === attr[0])?.icon || ''}.png`"
                           alt="">
                       <span>{{attr[1]}} </span>
                   </span>
@@ -93,7 +93,7 @@
               <td colspan="2">
                   <!-- 确保attr[1]为number，不然无法使用除法 -->
                   <span v-for="attr in Object.entries(star) as [string, number][]">
-                      <img :src="`/src/assets/img/attr/${material_attribute.find(a => a.name === attr[0])?.icon || ''}.png`"
+                      <img :src="`/img/attr/${material_attribute.find(a => a.name === attr[0])?.icon || ''}.png`"
                           alt="">
                       <span>{{parseFloat((attr[1] / item.slot).toFixed(1))}}</span>
                   </span>

@@ -3,7 +3,8 @@
     <!-- 加载动画 -->
     <div v-if="loading" class="loading-overlay">
       <div class="loading-content">
-        <div class="spinner-border text-primary" role="status" style="color: var(--ctp-custom);"></div>
+        <!-- <div class="spinner-border text-primary" role="status" style="color: var(--ctp-custom);"></div> -->
+        <img src="/img/icon.png" alt="Public Image">
         <div class="loading-text">稍等，正在加载图标...</div>
       </div>
     </div>
@@ -47,16 +48,15 @@
 
   // 预加载图片
   function preloadImages() {
-    const images = import.meta.glob('./assets/img/*.(png|jpe?g|svg)', { eager: true })
+    const images = import.meta.glob('/img/all/*.(png|jpe?g|svg)', { eager: true })
     const imagePromises = Object.keys(images).map((key) => {
       return new Promise((resolve, reject) => {
         const img = new Image()
-        img.src = key.replace('/src', '')
+        img.src = (images[key] as { default: string }).default
         img.onload = resolve
         img.onerror = reject
       })
     })
-
     return Promise.all(imagePromises)
   }
 

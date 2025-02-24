@@ -49,6 +49,7 @@
                         非常好图鉴，💕来自营火<br>
                         @Yamds(Kumiko_chann)
                     </p>
+                    <hr>
                 </li>
             </ul>
         </div>

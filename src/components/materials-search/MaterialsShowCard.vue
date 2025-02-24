@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div v-for="(item, item_index) in showItemCard" class="col-md-6 col-10">
+    <div v-for="(item, item_index) in showItemCard" class="col-md-6 col-12 itemShowCard">
       <transition name="fade" mode="out-in">
         <table v-if="item.name?.length > 0" :key="version[item_index]">
           <tbody>
@@ -195,6 +195,9 @@
 </script>
 
 <style scoped>
+  .itemShowCard {
+    margin-bottom: 20px;
+  }
   table {
     width: 100%;
   }

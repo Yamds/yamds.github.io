@@ -5,20 +5,23 @@
             <div class="col-md-6">
                 <ul>
                     <li>
-                        <h4>主题色</h4>
+                        <hr>
+                        <h4>主题背景色: </h4>
                         <div class="theme-color">
                             <span @click="cycleTheme">
                                 {{ theme_color }}
                             </span>
                         </div>
+                        <hr>
                     </li>
                     <li>
-                        <h4>强调色</h4>
+                        <h4>强调色: </h4>
                         <div class="theme-color">
                             <span @click="cycleCustomColor">
                                 {{ customColor }}
                             </span>
                         </div>
+                        <hr>
                     </li>
                 </ul>
             </div>
@@ -63,7 +66,7 @@
         document.documentElement.style.setProperty('--ctp-custom', `var(--ctp-${customColors[nextIndex]})`)
     }
 
-    // 初始化
+    // 初始化 获取localstorage里的主题
     onMounted(() => {
         if (!localStorage.getItem('theme')) {
             localStorage.setItem('theme', 'macchiato')

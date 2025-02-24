@@ -7,7 +7,7 @@
                 <li>
                     <hr>
                     <p>
-                        课余编写，代码一坨，如有错误，欢迎指正qwq(vue3练手)
+                        这是我的 Vue 3 练习项目，一个为 Minecraft RPG 服务器 《营火（Foacraft）》 打造的材料图鉴查询网站。作为前端开发的纯新手，我搭建这个网站的目的是方便玩家快速查询游戏内的材料及其详细信息。如果大佬们发现任何问题或有改进建议，欢迎随时指出！你们的反馈对我来说非常宝贵，我会继续努力学习并提升自己的技能。
                     </p>
                 </li>
                 <li>
@@ -37,8 +37,9 @@
                     <p>一些链接：<br>
                         &emsp;主题颜色样式: <a href="https://catppuccin.com/palette/" target="_blank">catppuccin</a><br>
                         &emsp;使用的技术: <a href="https://cn.vuejs.org/" target="_blank">Vue3</a> + <a href="https://getbootstrap.com/" target="_blank">Bootstrap5</a><br>
-                        &emsp;营火官方群: <a href="#">366609833</a>(无法分享，自行加入)<br>
+                        &emsp;营火官方群: <a href="#" target="_blank">366609833</a>(无法分享，自行加入)<br>
                         &emsp;营火萌新群: <a href="https://qm.qq.com/q/6aaB7w4oTK" target="_blank">[营火]萌新组队互助群</a><br>
+                        &emsp;本项目的地址: <a href="https://github.com/Yamds/yamds.github.io" target="_blank">yamds.github.io</a><br>
                         &emsp;作者B站: <a href="https://space.bilibili.com/220675708" target="_blank">@Yamds</a>
                     </p>
                 </li>

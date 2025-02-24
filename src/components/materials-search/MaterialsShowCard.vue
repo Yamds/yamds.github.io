@@ -158,7 +158,7 @@
   let material_attribute = materialTypes.material_attribute
   let showCardPos = 1;
   let showCardValueType = ref([1, 1]);
-  let showItemCard = ref(JSON.parse(localStorage.getItem('showItemCard') || '{"item1": {}, "item2": {}}'))
+  let showItemCard = ref<{item1: MaterialsInter, item2: MaterialsInter}>(JSON.parse(localStorage.getItem('showItemCard') || '{"item1": {}, "item2": {}}'))
   let version = ref({item1: 1, item2: 1})
 
   // 方法

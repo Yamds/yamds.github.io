@@ -151,14 +151,14 @@
 <script lang="ts" setup>
   import emitter from '../../utils/emitter';
   import { type MaterialsInter } from '../../types'
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import materialTypes from '../../assets/json/material_type.json'
 
   // 属性
-  let {material_level, material_type, material_attribute} = materialTypes
+  let material_attribute = materialTypes.material_attribute
   let showCardPos = 1;
   let showCardValueType = ref([1, 1]);
-  let showItemCard = ref({item1: {} as MaterialsInter, item2: {} as MaterialsInter})
+  let showItemCard = ref(JSON.parse(localStorage.getItem('showItemCard') || '{"item1": {}, "item2": {}}'))
   let version = ref({item1: 1, item2: 1})
 
   // 方法
@@ -192,6 +192,11 @@
     }
     showCardPos *= -1
   })
+
+  // 监听showItemCard的变化并保存到localStorage
+  watch(showItemCard, (newValue) => {
+    localStorage.setItem('showItemCard', JSON.stringify(newValue))
+  }, { deep: true , immediate: true})
 </script>
 
 <style scoped>

@@ -50,13 +50,15 @@
 
   // 属性
   let {material_level, material_type, material_attribute} = material
-  // 初始化时材料全部选择(all selected)
-  let selected = ref<MaterialsTypesInter>({
+  
+  // 从localStorage读取数据，如果没有则使用默认值
+  let selected = ref<MaterialsTypesInter>(JSON.parse(localStorage.getItem('materials-selected') || 'null') || {
     level: material_level.map(item => item.name),
     type: material_type.map(item => item.name),
     attribute: material_attribute.map(item => item.name)
   })
-  let andor = ref(false)
+  
+  let andor = ref(JSON.parse(localStorage.getItem('materials-andor') || 'false'))
 
   // 计算属性
   let selected_all = computed(() => {
@@ -118,14 +120,16 @@
     emitter.emit("send-andor", andor.value)
   })
 
-
+  // 监听selected和andor的变化，并保存到localStorage
   watch(selected.value, (newValue) => {
+    localStorage.setItem('materials-selected', JSON.stringify(newValue))
     emitter.emit("send-selected", newValue)
-  }, {deep: true})
+  }, {deep: true, immediate: true})
+  
   watch(andor, (newValue) => {
+    localStorage.setItem('materials-andor', JSON.stringify(newValue))
     emitter.emit("send-andor", newValue)
-  })
-
+  }, {deep: true, immediate: true})
 </script>
 
 <style scoped>

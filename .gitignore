@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+update gh-pages.bat

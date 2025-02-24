@@ -3,13 +3,19 @@
     <div class="navbar col-md-12">
         <ul>
             <li @click="active_web=1" :class="{active:active_web==1}">
-                查询材料
+              <keep-alive>
+                <RouterLink :to="{name:'materials-search'}">查询材料</RouterLink>
+              </keep-alive>
             </li>
             <li @click="active_web=2" :class="{active:active_web==2}">
-                设置
+              <keep-alive>
+                <RouterLink :to="{name:'settings'}">设置</RouterLink>
+              </keep-alive>
             </li>
             <li @click="active_web=3" :class="{active:active_web==3}">
-                说明
+              <keep-alive>
+                <RouterLink :to="{name:'info'}">说明</RouterLink>
+              </keep-alive>
             </li>
         </ul>
     </div>
@@ -23,6 +29,7 @@
 
 <script setup lang="ts">
   import { ref, watch } from "vue";
+  import { useRoute, RouterLink } from "vue-router";
   import emitter from "../utils/emitter";
   let active_web = ref(1)
   
@@ -41,11 +48,7 @@
   .navbar li{
     list-style: none;
     display: inline-block;
-    padding: 0.7em 0.7em 0.3em 0.7em;
     border-radius: 5px 5px 0 0;
-    font-size: 1.3em;
-    text-align: center;
-    line-height: 1.4;
     cursor: pointer;
   }
   .navbar li:not(.active):hover {
@@ -54,6 +57,15 @@
     border-bottom: none;
     margin: 0 -1px;
     transition: background-color 0.3s ease;
+  }
+  .navbar li a{
+    display: inline-block;
+    padding: 0.7em 0.7em 0.3em 0.7em;
+    text-decoration: none !important;
+    font-size: 1.3em;
+    color: var(--ctp-text);
+    text-align: center;
+    line-height: 1.4;
   }
   .active{
       border: 1px solid var(--ctp-custom);

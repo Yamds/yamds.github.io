@@ -9,10 +9,15 @@
             </li>
             <li @click="active_web=2" :class="{active:active_web==2}">
               <keep-alive>
-                <RouterLink :to="{name:'settings'}">设置</RouterLink>
+                <RouterLink :to="{name:'simulation'}">装备模拟</RouterLink>
               </keep-alive>
             </li>
             <li @click="active_web=3" :class="{active:active_web==3}">
+              <keep-alive>
+                <RouterLink :to="{name:'settings'}">设置</RouterLink>
+              </keep-alive>
+            </li>
+            <li @click="active_web=4" :class="{active:active_web==4}">
               <keep-alive>
                 <RouterLink :to="{name:'info'}">说明</RouterLink>
               </keep-alive>

@@ -1,0 +1,97 @@
+{
+    "helmet": {
+        "name": "头盔",
+        "attribute": ["defense1", "defense2"],
+        "replace": false,
+        "material_type": {
+            "silk": 8,
+            "shard": 7,
+            "relic": 6,
+            "rope": 5
+        }
+    },
+    "chestplate": {
+        "name": "内甲",
+        "attribute": ["defense1"],
+        "replace": false,
+        "material_type": {
+            "silk": 9,
+            "shard": 8,
+            "relic": 10,
+            "rope": 6
+        }
+    },
+    "cloak": {
+        "name": "斗篷",
+        "attribute": ["defense1"],
+        "replace": false,
+        "material_type": {
+            "silk": 10,
+            "shard": 7,
+            "relic": 6,
+            "rope": 6
+        }
+    },
+    "legging": {
+        "name": "腿甲",
+        "attribute": ["mana"],
+        "replace": false,
+        "material_type": {
+            "silk": 6,
+            "shard": 8,
+            "relic": 6,
+            "rope": 6
+        }
+    },
+    "boot": {
+        "name": "靴子",
+        "attribute": ["mana_restores"],
+        "replace": false,
+        "material_type": {
+            "silk": 6,
+            "shard": 6,
+            "relic": 6,
+            "rope": 6
+        }
+    },
+    "ring": {
+        "name": "戒指",
+        "attribute": ["damage"],
+        "replace": true,
+        "material_type": {
+            "silk_sum": 8,
+            "shard_sum": 10,
+            "core": 1
+        }
+    },
+    "amulet" :{
+        "name": "项链",
+        "attribute": ["magic"],
+        "replace": true,
+        "material_type": {
+            "silk_sum": 12,
+            "shard_sum": 7,
+            "core": 1
+        }
+    },
+    "bracelet": {
+        "name": "手镯",
+        "attribute": ["treatment"],
+        "replace": true,
+        "material_type": {
+            "silk_sum": 11,
+            "shard_sum": 10,
+            "core": 1
+        }
+    },
+    "gloves": {
+        "name": "手套",
+        "attribute": ["gedang"],
+        "replace": true,
+        "material_type": {
+            "silk_sum": 9,
+            "shard_sum": 17,
+            "core": 1
+        }
+    }
+}

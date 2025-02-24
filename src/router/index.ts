@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MaterialsSearch from '../pages/MaterialsSearch.vue'
 import Settings from '../pages/Settings.vue'
 import Info from '../pages/Info.vue'
-import { KeepAlive } from 'vue'
+import Simulation from '../pages/Simulation.vue'
 
 let router = createRouter({
     history:createWebHistory(),
@@ -14,6 +14,12 @@ let router = createRouter({
             name: "materials-search",
             path: "/materials-search",
             component: MaterialsSearch,
+            meta: {KeepAlive: true}
+        },
+        {
+            name: "simulation",
+            path: "/simulation",
+            component: Simulation,
             meta: {KeepAlive: true}
         },
         {

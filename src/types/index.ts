@@ -23,3 +23,23 @@ export interface MaterialsTypesInter {
   type: string[],
   attribute: string[]
 }
+
+export interface ArmorTypeInter {
+  
+}
+
+export interface SimulationListCard {
+  id: number,
+  icon: string,
+  type: string,
+  // 布匹
+  silk: MaterialsInter[],
+  // 碎块
+  shard: MaterialsInter[],
+  // 残骸
+  relic: MaterialsInter[],
+  // 丝绳
+  rope: MaterialsInter[],
+  // 兽核
+  core: MaterialsInter[],
+}

@@ -1,6 +1,7 @@
 {
     "helmet": {
         "name": "头盔",
+        "icon": "",
         "attribute": ["defense1", "defense2"],
         "replace": false,
         "material_type": {

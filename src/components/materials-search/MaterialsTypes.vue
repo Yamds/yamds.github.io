@@ -33,6 +33,7 @@
       <span>{{ attribute.name }}</span>
     </span>
   </div>
+
 </template>
 
 <script lang="ts">
@@ -68,6 +69,8 @@
       selected.value.attribute.length === material_attribute.length
     ];
   })
+
+  
 
   // 方法
   function selectAll(type: string) {

@@ -34,6 +34,7 @@
     attribute: []
   })
   let andor = ref('')
+  // let addMode = ref(JSON.parse(localStorage.getItem('add-mode') || 'false'))
 
   // 绑定emit事件，从MaterialsInput和MaterialsType两个组件传值进来
   emitter.on("send-selected", (value:any) => {

@@ -1,6 +1,13 @@
 <template>
     <div>
+        <h2>装备列表</h2>
         <ul>
+            <li>
+                
+            </li>
+            <li>
+                
+            </li>
             <li>
                 
             </li>

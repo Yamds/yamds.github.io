@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <!-- 槽位展示 -->
-                <div class="col-md-6">
+                <div class="col-md-6 col-8">
                     <h5>剩余材料槽位：</h5>
                     <div>
                         <div v-for="(value, key) in slot_calc">
@@ -59,14 +59,16 @@
                     </div>
                 </div>
                 <!-- 属性展示 -->
-                <div class="col-md-6">
+                <div class="col-md-6 col-4 attribute-show">
                     <h5>装备属性: </h5>
-                    <ul>
-                        <li v-for="attr in selected_material_attribute" :key="Object.keys(attr)[0]" v-show="attr[Object.keys(attr)[0]] != 0">
-                            <img :src="`/img/attr/${material_type.find(a => a.name == Object.keys(attr)[0])?.icon}.png`" alt="">
-                            {{ Object.keys(attr)[0] }} : {{ attr[Object.keys(attr)[0]] }}
-                        </li>
-                    </ul>
+                    <span v-for="attr in selected_material_attribute" :key="Object.keys(attr)[0]" v-show="attr[Object.keys(attr)[0]] != 0">
+                        <img :src="`/img/attr/${material_attribute.find(a => a.name == Object.keys(attr)[0])?.icon}.png`" alt="">
+                        {{ Object.keys(attr)[0] }} : {{ attr[Object.keys(attr)[0]] }}
+                    </span>
+                    <h5>技能: </h5>
+                    <span>
+
+                    </span>
                 </div>
             </div>
         </div>
@@ -167,7 +169,7 @@
                 }
             });
         });
-
+        attribute_list = attribute_list.filter(item => Object.values(item)[0] != 0)
         return attribute_list;
     });
 
@@ -276,5 +278,13 @@
         background-color: var(--ctp-surface1);
         border: 1px solid var(--ctp-custom);
         transition: all 0.2s ease;
+    }
+    .attribute-show {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .attribute-show img {
+        width: 1.6em;
     }
 </style>

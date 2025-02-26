@@ -1,97 +1,143 @@
 {
     "helmet": {
+        "id": 1,
         "name": "头盔",
-        "icon": "",
+        "icon": "helmet",
         "attribute": ["defense1", "defense2"],
-        "replace": false,
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
         "material_type": {
+            "rope": 5,
             "silk": 8,
             "shard": 7,
             "relic": 6,
-            "rope": 5
+            "core": 0
         }
     },
     "chestplate": {
+        "id": 2,
         "name": "内甲",
+        "icon": "chestplate",
         "attribute": ["defense1"],
-        "replace": false,
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
         "material_type": {
+            "rope": 6,
             "silk": 9,
             "shard": 8,
             "relic": 10,
-            "rope": 6
+            "core": 0
         }
     },
     "cloak": {
+        "id": 3,
         "name": "斗篷",
+        "icon": "cloak",
         "attribute": ["defense1"],
-        "replace": false,
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
         "material_type": {
+            "rope": 6,
             "silk": 10,
             "shard": 7,
             "relic": 6,
-            "rope": 6
+            "core": 0
         }
     },
     "legging": {
+        "id": 4,
         "name": "腿甲",
+        "icon": "legging",
         "attribute": ["mana"],
-        "replace": false,
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
         "material_type": {
+            "rope": 6,
             "silk": 6,
             "shard": 8,
             "relic": 6,
-            "rope": 6
+            "core": 0
         }
     },
     "boot": {
+        "id": 5,
         "name": "靴子",
+        "icon": "boot",
         "attribute": ["mana_restores"],
-        "replace": false,
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
         "material_type": {
+            "rope": 6,
             "silk": 6,
             "shard": 6,
             "relic": 6,
-            "rope": 6
+            "core": 0
         }
     },
     "ring": {
+        "id": 6,
         "name": "戒指",
+        "icon": "ring",
         "attribute": ["damage"],
-        "replace": true,
+        "sum": [["silk", "rope"], ["shard", "relic"]],
         "material_type": {
-            "silk_sum": 8,
-            "shard_sum": 10,
+            "silk": 8,
+            "rope": 8,
+            "shard": 8,
+            "relic": 8,
             "core": 1
         }
     },
     "amulet" :{
+        "id": 7,
         "name": "项链",
+        "icon": "amulet",
         "attribute": ["magic"],
-        "replace": true,
+        "sum": [["silk", "rope"], ["shard", "relic"]],
         "material_type": {
-            "silk_sum": 12,
-            "shard_sum": 7,
+            "silk": 12,
+            "rope": 12,
+            "shard": 7,
+            "relic": 7,
             "core": 1
         }
     },
     "bracelet": {
+        "id": 8,
         "name": "手镯",
+        "icon": "bracelet",
         "attribute": ["treatment"],
-        "replace": true,
+        "sum": [["silk", "rope"], ["shard", "relic"]],
         "material_type": {
-            "silk_sum": 11,
-            "shard_sum": 10,
+            "silk": 11,
+            "rope": 11,
+            "shard": 10,
+            "relic": 10,
             "core": 1
         }
     },
     "gloves": {
+        "id": 9,
         "name": "手套",
+        "icon": "gloves",
         "attribute": ["gedang"],
-        "replace": true,
+        "sum": [["silk", "rope"], ["shard", "relic"]],
         "material_type": {
-            "silk_sum": 9,
-            "shard_sum": 17,
+            "silk": 9,
+            "rope": 9,
+            "shard": 17,
+            "relic": 17,
+            "core": 1
+        }
+    },
+    "ingot": {
+        "id": 10,
+        "name": "精工锭",
+        "icon": "ingot",
+        "attribute": [
+            
+        ],
+        "sum": [["silk", "rope", "shard", "relic"]],
+        "material_type": {
+            "silk": 14,
+            "rope": 14,
+            "shard": 14,
+            "relic": 14,
             "core": 1
         }
     }

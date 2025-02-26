@@ -15,23 +15,28 @@
   "material_type": [{
     "id": 1,
     "name": "丝绳",
-    "icon": "sisheng"
+    "icon": "sisheng",
+    "word": "rope"
   }, {
     "id": 2,
     "name": "布匹",
-    "icon": "bupi"
+    "icon": "bupi",
+    "word": "silk"
   }, {
     "id": 3,
     "name": "碎块",
-    "icon": "suikuai"
+    "icon": "suikuai",
+    "word": "shard"
   }, {
     "id": 4,
     "name": "残骸",
-    "icon": "canhai"
+    "icon": "canhai",
+    "word": "relic"
   }, {
     "id": 5,
     "name": "兽核",
-    "icon": "shouhe"
+    "icon": "shouhe",
+    "word": "core"
   }],
   "material_attribute": [{
     "id": 1,

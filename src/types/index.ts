@@ -1,3 +1,4 @@
+// 材料
 export interface MaterialsInter {
   id: number;
   name: string;
@@ -24,10 +25,6 @@ export interface MaterialsTypesInter {
   attribute: string[]
 }
 
-export interface ArmorTypeInter {
-  
-}
-
 export interface SimulationListCard {
   id: number,
   icon: string,
@@ -42,4 +39,25 @@ export interface SimulationListCard {
   rope: MaterialsInter[],
   // 兽核
   core: MaterialsInter[],
+}
+
+export interface ArmorInter {
+  id: number,
+  name: string,
+  icon: string,
+  attribute: string[],
+  sum: string[][],
+  material_type: {
+    silk: number,
+    rope: number,
+    shard: number,
+    relic: number,
+    core: number
+  }
+}
+
+// 选中的装备材料，还需要附带星级属性
+export interface SelectedArmorMaterialInter {
+  material: MaterialsInter,
+  star: number
 }

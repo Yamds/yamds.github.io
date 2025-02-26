@@ -4,7 +4,7 @@
         "name": "头盔",
         "icon": "helmet",
         "attribute": ["defense1", "defense2"],
-        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"], ["core"]],
         "material_type": {
             "rope": 5,
             "silk": 8,
@@ -18,7 +18,7 @@
         "name": "内甲",
         "icon": "chestplate",
         "attribute": ["defense1"],
-        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"], ["core"]],
         "material_type": {
             "rope": 6,
             "silk": 9,
@@ -32,7 +32,7 @@
         "name": "斗篷",
         "icon": "cloak",
         "attribute": ["defense1"],
-        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"], ["core"]],
         "material_type": {
             "rope": 6,
             "silk": 10,
@@ -46,7 +46,7 @@
         "name": "腿甲",
         "icon": "legging",
         "attribute": ["mana"],
-        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"], ["core"]],
         "material_type": {
             "rope": 6,
             "silk": 6,
@@ -60,7 +60,7 @@
         "name": "靴子",
         "icon": "boot",
         "attribute": ["mana_restores"],
-        "sum": [["silk"], ["rope"], ["shard"], ["relic"]],
+        "sum": [["silk"], ["rope"], ["shard"], ["relic"], ["core"]],
         "material_type": {
             "rope": 6,
             "silk": 6,
@@ -74,7 +74,7 @@
         "name": "戒指",
         "icon": "ring",
         "attribute": ["damage"],
-        "sum": [["silk", "rope"], ["shard", "relic"]],
+        "sum": [["silk", "rope"], ["shard", "relic"], ["core"]],
         "material_type": {
             "silk": 8,
             "rope": 8,
@@ -88,7 +88,7 @@
         "name": "项链",
         "icon": "amulet",
         "attribute": ["magic"],
-        "sum": [["silk", "rope"], ["shard", "relic"]],
+        "sum": [["silk", "rope"], ["shard", "relic"], ["core"]],
         "material_type": {
             "silk": 12,
             "rope": 12,
@@ -102,7 +102,7 @@
         "name": "手镯",
         "icon": "bracelet",
         "attribute": ["treatment"],
-        "sum": [["silk", "rope"], ["shard", "relic"]],
+        "sum": [["silk", "rope"], ["shard", "relic"], ["core"]],
         "material_type": {
             "silk": 11,
             "rope": 11,
@@ -116,7 +116,7 @@
         "name": "手套",
         "icon": "gloves",
         "attribute": ["gedang"],
-        "sum": [["silk", "rope"], ["shard", "relic"]],
+        "sum": [["silk", "rope"], ["shard", "relic"], ["core"]],
         "material_type": {
             "silk": 9,
             "rope": 9,
@@ -132,7 +132,7 @@
         "attribute": [
             
         ],
-        "sum": [["silk", "rope", "shard", "relic"]],
+        "sum": [["silk", "rope", "shard", "relic"], ["core"]],
         "material_type": {
             "silk": 14,
             "rope": 14,

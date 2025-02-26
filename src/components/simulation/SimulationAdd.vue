@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <h2>新增装备</h2>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <h4>材料列表</h4>
             <div class="row">
                 <div class="checkbox col-md-6" title="请返回材料图鉴点击添加">
@@ -14,7 +14,7 @@
                         <img src="/img/attr/maoxianrenwu1_4.png" alt="">清除列表
                     </span>
                 </div>
-                <div class="deletebox col-md-2" v-for="index in 5" :key="index">
+                <div class="deletebox col-md-3" v-for="index in 5" :key="index">
                     <span @click="selected_star = index" :class="selected_star === index ? 'selected' : 'unselected'">
                         {{ index }}星
                     </span>
@@ -34,7 +34,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <h4>锻造面板</h4>
             <h5>锻造内容</h5>
             <div class="armor-type-list">
@@ -43,15 +43,30 @@
                     <span>{{ item.name }}</span>
                 </div>
             </div>
-            <h5>剩余材料槽位：</h5>
-            <div>
-                <div v-for="(value, key) in selected_armor.material">
-                    <img :src="`/img/attr/${material_type.find(a => a.word === key)?.icon || ''}.png`">
-                    <span>{{ "[ " + slot_calc[key] + " ]" }}</span>
-                    <span v-for="item in selected_list" :key="item.id" v-show="item.type === material_type.find(a => a.word === key)?.name">
-                        <img :src="`/img/all/${item.icon}.png`" v-for="count in item.slot">
-                    </span>
-                    <hr v-if="selected_armor.armor.sum.some(subArray => subArray[subArray.length - 1] === key)">
+            <div class="row">
+                <!-- 槽位展示 -->
+                <div class="col-md-6">
+                    <h5>剩余材料槽位：</h5>
+                    <div>
+                        <div v-for="(value, key) in slot_calc">
+                            <img :src="`/img/attr/${material_type.find(a => a.word === key)?.icon || ''}.png`">
+                            <span>{{ "[ " + slot_calc[key] + " ]" }}</span>
+                            <span v-for="item in selected_list" :key="item.id" v-show="item.type === material_type.find(a => a.word === key)?.name">
+                                <img :src="`/img/all/${item.icon}.png`" v-for="count in item.slot">
+                            </span>
+                            <hr v-if="selected_armor.armor.sum.some(subArray => subArray[subArray.length - 1] === key)">
+                        </div>
+                    </div>
+                </div>
+                <!-- 属性展示 -->
+                <div class="col-md-6">
+                    <h5>装备属性: </h5>
+                    <ul>
+                        <li v-for="attr in selected_material_attribute" :key="Object.keys(attr)[0]" v-show="attr[Object.keys(attr)[0]] != 0">
+                            <img :src="`/img/attr/${material_type.find(a => a.name == Object.keys(attr)[0])?.icon}.png`" alt="">
+                            {{ Object.keys(attr)[0] }} : {{ attr[Object.keys(attr)[0]] }}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -67,7 +82,7 @@
 <script lang="ts" setup>
     import emitter from '../../utils/emitter';
     import { ref, watch, computed } from 'vue';
-    import { type MaterialsInter, type ArmorInter, type SelectedArmorMaterialInter } from '@/types';
+    import { type MaterialsInter, type ArmorInter, type SelectedArmorMaterialInter } from '../../types';
     import materialTypes from '../../assets/json/material_type.json'
     import armortype from '../../assets/json/armor_type.json'
 
@@ -89,42 +104,72 @@
     // 选中的装备
     let selected_armor = ref({
         armor: armortype.helmet as ArmorInter,
-        // 剩余材料槽位
-        material: {
+        // 选中的材料
+        selected_material: [] as SelectedArmorMaterialInter[]
+    })
+
+    // 监听 选中的装备 变化
+    watch(() => selected_armor.value.armor, () => {
+        selected_armor.value.selected_material = [] as SelectedArmorMaterialInter[]
+        selected_list.value = []
+    }, {deep: true, immediate: true})
+
+    // 剩余槽位计算
+    let slot_calc = computed(() => {
+        const result: Record<string, number> = {
             silk: 0,
             rope: 0,
             shard: 0,
             relic: 0,
             core: 0
-        },
-        // 选中的材料
-        selected_material: [] as SelectedArmorMaterialInter[]
-    })
-    // 监听 选中的装备 变化
-    watch(selected_armor.value, (value) => {
-        value.material = value.armor.material_type
-        if(value.selected_material.length > 0) {
-            value.selected_material = []
-        }
-    }, {deep: true, immediate: true})
+        };
 
-    // 监听 选中的材料 变化
-    watch(selected_list.value, (value) => {
-        selected_armor.value.selected_material = value.map((item) => ({
-            material: item,
-            star: selected_star.value
-        }))
-    }, {deep: true})
+        // 从选中的装备中获取 sum 数组
+        const sumArray = selected_armor.value.armor.sum || [];
 
-    var slot_calc = computed(() => {
-        return {
-            silk: selected_armor.value.armor.material_type.silk - selected_list.value.filter((item) => item.type === '布匹').reduce((slot_sum, item) => slot_sum + item.slot, 0),
-            rope: selected_armor.value.armor.material_type.rope - selected_list.value.filter((item) => item.type === '丝绳').reduce((slot_sum, item) => slot_sum + item.slot, 0),
-            shard: selected_armor.value.armor.material_type.shard - selected_list.value.filter((item) => item.type === '碎块').reduce((slot_sum, item) => slot_sum + item.slot, 0),
-            relic: selected_armor.value.armor.material_type.relic - selected_list.value.filter((item) => item.type === '残骸').reduce((slot_sum, item) => slot_sum + item.slot, 0),
-            core: selected_armor.value.armor.material_type.core - selected_list.value.filter((item) => item.type === '兽核').reduce((slot_sum, item) => slot_sum + item.slot, 0)
-        }
+        // 计算共通的槽位
+        sumArray.forEach(group => {
+            // 计算该组已使用的槽位总数
+            const usedSlots = group.reduce((total, key) => {
+                return total + selected_list.value
+                    .filter(item => material_type.find(a => a.word === key)?.name === item.type)
+                    .reduce((sum, item) => sum + item.slot, 0);
+            }, 0);
+
+            // 计算该组的总槽位并平均分配
+            const totalSlots = group.reduce((total, key) => {
+                return total + (selected_armor.value.armor.material_type[key as 'silk' | 'rope' | 'shard' | 'relic' | 'core'] || 0);
+            }, 0);
+            const remainingSlots = (totalSlots / group.length - usedSlots);
+
+            group.forEach(key => {
+                result[key] = remainingSlots;
+            });
+        });
+
+        return result;
     })
+
+    let selected_material_attribute = computed(() => {
+        // [{"属性": number}, ...]      此处的[item.name]并非数组索引，而是计算数值
+        let attribute_list = material_attribute.map(item => ({ [item.name]: 0 }));
+
+        // 摘取所选材料(材料，星级)
+        selected_armor.value.selected_material.forEach(({ material, star }) => {
+            let star_data = material.star[star - 1];
+            // 遍历选中材料的属性值
+            Object.entries(star_data).forEach(attr => {
+                // 将attr对应的数值添加到attribute_list里去
+                // 这猎德target是浅拷贝，操作target可以影响attribute_list
+                const target = attribute_list.find(item => Object.keys(item)[0] === attr[0]);
+                if (target) {
+                    target[attr[0]] += attr[1];
+                }
+            });
+        });
+
+        return attribute_list;
+    });
 
     // 切换 添加材料 模式
     function toggleAddMode() {
@@ -136,9 +181,13 @@
         material_list.value = []
         localStorage.removeItem('simulation-material-list')
     }
-    // 选中材料
+    // 选材料
     function selectItem(item_input: MaterialsInter) {
         selected_list.value.push(item_input)
+        selected_armor.value.selected_material.push({
+            material: item_input,
+            star: selected_star.value
+        })
         localStorage.setItem('simulation-selected-list', JSON.stringify(selected_list.value))
     }
 
@@ -158,6 +207,9 @@
 </script>
 
 <style scoped>
+    li {
+        list-style: none;
+    }
     h2 {
         margin-bottom: 10px;
     }

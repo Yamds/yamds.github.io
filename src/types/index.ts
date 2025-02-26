@@ -5,13 +5,7 @@ export interface MaterialsInter {
   icon: string;
   slot: number;
   level: string;
-  star: {
-    "一星": {},
-    "二星": {},
-    "三星": {},
-    "四星": {},
-    "五星": {},
-  };
+  star: Array<Record<string, number>>;
   attribute: string[];
   skill: string;
   drop: string[];

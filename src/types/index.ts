@@ -55,3 +55,9 @@ export interface SelectedArmorMaterialInter {
   material: MaterialsInter,
   star: number
 }
+
+// 技能
+export interface SkillInter {
+  name: string
+  desc: string
+}

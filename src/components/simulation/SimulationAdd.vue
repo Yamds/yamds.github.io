@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <!-- 槽位展示 -->
-                <div class="col-md-6 col-8">
+                <div class="col-md-6 slot-show">
                     <h5>剩余材料槽位：</h5>
                     <div>
                         <div v-for="(value, key) in slot_calc">
@@ -59,16 +59,24 @@
                     </div>
                 </div>
                 <!-- 属性展示 -->
-                <div class="col-md-6 col-4 attribute-show">
-                    <h5>装备属性: </h5>
-                    <span v-for="attr in selected_material_attribute" :key="Object.keys(attr)[0]" v-show="attr[Object.keys(attr)[0]] != 0">
-                        <img :src="`/img/attr/${material_attribute.find(a => a.name == Object.keys(attr)[0])?.icon}.png`" alt="">
-                        {{ Object.keys(attr)[0] }} : {{ attr[Object.keys(attr)[0]] }}
-                    </span>
-                    <h5>技能: </h5>
-                    <span>
-
-                    </span>
+                <div class="col-md-6 attribute-show-card">
+                    <div class="row">
+                        <div class="col-md-5 attribute-show">
+                            <h5 v-if="selected_material_attribute.length != 0">装备属性: <small style="color: var(--ctp-surface2);">(非成品)</small></h5>
+                            <div v-for="attr in selected_material_attribute" :key="attr.name" v-show="attr.value != 0">
+                                <img :src="`/img/attr/${material_attribute.find(a => a.name == attr.name)?.icon}.png`" alt="">
+                                {{ attr.name }} : {{ attr.value }}
+                            </div>
+                        </div>
+                        <div class="col-md-7 skill-show">
+                            <h5 v-if="selected_material_skill.length != 0 && selected_armor.armor.name != '精工锭'">技能: </h5>
+                            <div v-for="skill in selected_material_skill" v-show="selected_armor.armor.name != '精工锭'">
+                                {{ skill.name }} : {{ skill.desc }}
+                            </div>
+                        </div>
+                        
+                   
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,7 +92,7 @@
 <script lang="ts" setup>
     import emitter from '../../utils/emitter';
     import { ref, watch, computed } from 'vue';
-    import { type MaterialsInter, type ArmorInter, type SelectedArmorMaterialInter } from '../../types';
+    import { type MaterialsInter, type ArmorInter, type SelectedArmorMaterialInter, type SkillInter } from '../../types';
     import materialTypes from '../../assets/json/material_type.json'
     import armortype from '../../assets/json/armor_type.json'
 
@@ -98,7 +106,7 @@
     let selected_star = ref<number>(5)
 
     let addMode = ref(Boolean(JSON.parse(localStorage.getItem('add-mode') || 'false')))
-    let { material_attribute, material_type } = materialTypes
+    let { material_attribute, material_type, material_skill } = materialTypes
 
     // 获取装备类型
     let armor_type = ref(armortype)
@@ -116,7 +124,7 @@
         selected_list.value = []
     }, {deep: true, immediate: true})
 
-    // 剩余槽位计算
+    // *计算 - 剩余槽位计算
     let slot_calc = computed(() => {
         const result: Record<string, number> = {
             silk: 0,
@@ -151,10 +159,13 @@
 
         return result;
     })
-
+    // *计算 - 选择的材料，按照星级拿到属性值 累加
     let selected_material_attribute = computed(() => {
         // [{"属性": number}, ...]      此处的[item.name]并非数组索引，而是计算数值
-        let attribute_list = material_attribute.map(item => ({ [item.name]: 0 }));
+        let attribute_list = material_attribute.map(item => ({ 
+            "name": item.name,
+            "value": 0
+        }));
 
         // 摘取所选材料(材料，星级)
         selected_armor.value.selected_material.forEach(({ material, star }) => {
@@ -162,16 +173,32 @@
             // 遍历选中材料的属性值
             Object.entries(star_data).forEach(attr => {
                 // 将attr对应的数值添加到attribute_list里去
-                // 这猎德target是浅拷贝，操作target可以影响attribute_list
-                const target = attribute_list.find(item => Object.keys(item)[0] === attr[0]);
+                // 这里的target是浅拷贝，操作target可以影响attribute_list
+                const target = attribute_list.find(item => item.name === attr[0]);
                 if (target) {
-                    target[attr[0]] += attr[1];
+                    target.value += attr[1];
                 }
             });
         });
-        attribute_list = attribute_list.filter(item => Object.values(item)[0] != 0)
-        return attribute_list;
+        
+        return attribute_list.filter(item => item.value != 0);
     });
+
+    let selected_material_skill = computed(() => {
+        // [{"技能": "技能描述"}, ...]      此处的[item.name]并非数组索引，而是计算数值
+        let skill_list = [] as SkillInter[]
+        selected_armor.value.selected_material.forEach(({ material }) => {
+            if(material.skill) {
+                skill_list.push({
+                "name": material.skill.split("：")[0],
+                "desc": material.skill.split("：")[1]
+            })
+            }
+            
+        })
+        // 去重
+        return skill_list.filter((obj, index) => skill_list.findIndex(item => item.name === obj.name) === index);
+    })
 
     // 切换 添加材料 模式
     function toggleAddMode() {
@@ -279,11 +306,13 @@
         border: 1px solid var(--ctp-custom);
         transition: all 0.2s ease;
     }
-    .attribute-show {
+    .attribute-show-card .attribute-show,
+    .attribute-show-card .skill-show {
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
+    .slot-show img,
     .attribute-show img {
         width: 1.6em;
     }

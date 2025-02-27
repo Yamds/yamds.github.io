@@ -22,6 +22,8 @@
 </script>
 
 <script lang="ts" setup>
+    import emitter from '../../utils/emitter';
+    
 
 </script>
 

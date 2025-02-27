@@ -20,8 +20,8 @@
                     </span>
                 </div>
             </div>
-            <div class="checkbox materials-list" v-for="item in material_list" :key="item.id" @click="selectItem(item)" v-show="item.slot <= slot_calc[material_type.find(a => a.name === item.type)?.word]">
-                <span class="unselected">
+            <div class="checkbox materials-list" v-for="item in material_list" :key="item.id" @click="selectItem(item)">
+                <span class="unselected" v-if="item.slot <= slot_calc[material_type.find(a => a.name === item.type)?.word]">
                     <div>
                         <img :src="`/img/all/${item.icon}.png`" alt="">
                         <span>{{ item.name }}</span>
@@ -33,11 +33,25 @@
                     </div>
                 </span>
             </div>
+            <div class="checkbox materials-list" v-show="material_list.length==0">
+                <span class="unselected">
+                    暂无可以选择的材料哦~
+                </span>
+            </div>
+            <div class="checkbox materials-list" v-show="material_list.length != 0 && !hasValidMaterial">
+                <span class="unselected">
+                    槽位不足~
+                </span>
+            </div>
         </div>
         <div class="col-md-8">
             <h4>锻造面板</h4>
             <h5>锻造内容</h5>
             <div class="armor-type-list">
+                <div class="armor-checkbox armor-checkbox-delete" @click="selected_list = []; selected_armor.selected_material = []">
+                    <img src="/img/attr/maoxianrenwu1_4.png">
+                    <span>清除</span>
+                </div>
                 <div class="armor-checkbox" v-for="item in armor_type" :key="item.id" @click="selected_armor.armor = item" :class="selected_armor.armor.id === item.id ? 'selected' : ''">
                     <img :src="`/img/armor/${item.icon}.png`">
                     <span>{{ item.name }}</span>
@@ -71,11 +85,10 @@
                         <div class="col-md-7 skill-show">
                             <h5 v-if="selected_material_skill.length != 0 && selected_armor.armor.name != '精工锭'">技能: </h5>
                             <div v-for="skill in selected_material_skill" v-show="selected_armor.armor.name != '精工锭'">
+                                <img :src="`/img/skill/${material_skill.find(a => a.desc == skill.desc)?.icon}.png`" alt="">
                                 {{ skill.name }} : {{ skill.desc }}
                             </div>
                         </div>
-                        
-                   
                     </div>
                 </div>
             </div>
@@ -117,6 +130,9 @@
         // 选中的材料
         selected_material: [] as SelectedArmorMaterialInter[]
     })
+
+    // 检查 material_list 是否有数据
+    console.log('material_list:', material_list.value);
 
     // 监听 选中的装备 变化
     watch(() => selected_armor.value.armor, () => {
@@ -233,6 +249,13 @@
             emitter.off("send-clickItem")
         }
     }, {immediate: true})
+
+    // 添加一个计算属性，判断是否有满足条件的元素
+    const hasValidMaterial = computed(() => {
+        return material_list.value.some(item => 
+            item.slot <= slot_calc.value[material_type.find(a => a.name === item.type)?.word]
+        );
+    });
 </script>
 
 <style scoped>
@@ -302,6 +325,11 @@
         transition: all 0.3s ease;
     }
     .unselected:active {
+        background-color: var(--ctp-surface1);
+        border: 1px solid var(--ctp-custom);
+        transition: all 0.2s ease;
+    }
+    .armor-checkbox-delete:active {
         background-color: var(--ctp-surface1);
         border: 1px solid var(--ctp-custom);
         transition: all 0.2s ease;

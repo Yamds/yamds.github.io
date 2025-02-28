@@ -1,12 +1,12 @@
 <template>
     <ul>
         <!-- 判断条件 1. 等阶和种类  2. 属性包含 3. 输入框 -->
-        <li class="col-md-4 col-6" v-for="item in materialList" @click="showItem(item)"
+        <li class="col-md-4 col-6" v-for="item in useMaterialStore().materialList" @click="useMaterialStore().showItem(item)"
             v-show="
-                item.name.includes(search_input) && 
-                selected.level.includes(item.level) && 
-                selected.type.includes(item.type) && 
-                (!andor ? item.attribute.some((attr: string) => selected.attribute.includes(attr)) : selected.attribute.every((attr: string) => item.attribute.includes(attr)))">
+                item.name.includes(useMaterialStore().search_input) && 
+                useMaterialStore().selected.level.includes(item.level) && 
+                useMaterialStore().selected.type.includes(item.type) && 
+                (!useMaterialStore().andor ? item.attribute.some((attr: string) => useMaterialStore().selected.attribute.includes(attr)) : useMaterialStore().selected.attribute.every((attr: string) => item.attribute.includes(attr)))">
             <img :src="`/img/all/${item.icon}.png`">
             <span>{{item.name}}</span>
         </li>
@@ -20,40 +20,12 @@
 </script>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-  import materials from "../../assets/json/materials.json"
-  import emitter from "../../utils/emitter";
-  import { type MaterialsTypesInter } from '../../types'
-
-  // 属性
-  let materialList = materials
-  let search_input = ref('')
-  let selected = ref<MaterialsTypesInter>({
-    level: [],
-    type: [],
-    attribute: []
-  })
-  let andor = ref('')
-  // let addMode = ref(JSON.parse(localStorage.getItem('add-mode') || 'false'))
-
-  // 绑定emit事件，从MaterialsInput和MaterialsType两个组件传值进来
-  emitter.on("send-selected", (value:any) => {
-    selected.value = value
-  })
-  emitter.on("send-andor", (value:any) => {
-    andor.value = value
-  })
-  emitter.on("send-materials_input", (value:any) => {
-    search_input.value = value
-  })
-  
-  // showItem，传值给材料展示卡片
-  function showItem(item: any) {
-    emitter.emit("send-clickItem", item)
-  }
+  import { useMaterialStore } from '../../store/material'
 </script>
 
 <style scoped>
+@import '../../assets/css/material.css';
+@import '../../assets/css/checkbox.css';
   ul {
     width: 100%;
   }

@@ -1,11 +1,14 @@
 <template>
     <div class="row">
-        <!-- <h2 class="col-md-2 col-12">装备模拟</h2> -->
         <div class="col-md-2 col-12">
-            <!-- <SimulationList /> -->
+            <SimulationList />
         </div>
         <div class="col-md-10 col-12">
-            <SimulationAdd />
+            <div class="row">
+                <SimulationShowCard />
+                <SimulationAdd />
+                
+            </div>
         </div>
     </div>
 </template>
@@ -19,7 +22,7 @@
 <script lang="ts" setup>
     import SimulationAdd from '../components/simulation/SimulationAdd.vue';
     import SimulationList from '../components/simulation/SimulationList.vue';
-
+    import SimulationShowCard from '../components/simulation/SimulationShowCard.vue';
 </script>
 
 <style>

@@ -3,7 +3,6 @@
     <!-- 页面一：材料筛选 -->
     <div class="col-12 col-md-6">
       <MaterialsTypes />
-      <MaterialsInput /> 
       <MaterialsListShow />
     </div>
     <!-- 展示卡片 -->
@@ -19,7 +18,6 @@
     name: "MaterialsSearch",
     components: {
       MaterialsTypes,
-      MaterialsInput,
       MaterialsListShow,
       MaterialsShowCard
     }
@@ -29,7 +27,6 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
   import MaterialsTypes from '../components/materials-search/MaterialsTypes.vue'
-  import MaterialsInput from '../components/materials-search/MaterialsInput.vue'
   import MaterialsListShow from '../components/materials-search/MaterialsListShow.vue'
   import MaterialsShowCard from '../components/materials-search/MaterialsShowCard.vue';
 

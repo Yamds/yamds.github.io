@@ -7,13 +7,5 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ],
-  "compilerOptions": {
-    "typeRoots": [
-      "./node_modules/@types",
-      "../node_modules/@types",
-      "./type"
-    ],
-    "types": ["node"]
-  }
+  ]
 }

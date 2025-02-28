@@ -1,0 +1,65 @@
+li {
+    list-style: none;
+}
+h2 {
+    margin-bottom: 10px;
+}
+img {
+    width: 1.4em;
+}
+
+.materials-list>span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.list-right {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 4px;
+}
+
+.slot-show>div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slot-group-border-bottom {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid var(--ctp-surface1);
+}
+
+.slot-group-border-top {
+    padding-top: 0.5em;
+    border-top: 1px solid var(--ctp-surface1);
+}
+
+.slot-show img,
+.attribute-show img,
+.skill-show img {
+    width: 2em;
+}
+
+.attribute-show-card .attribute-show,
+.attribute-show-card .skill-show {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.armor-list-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+.armor-list-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}

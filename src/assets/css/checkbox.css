@@ -1,0 +1,40 @@
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--ctp-custom);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    user-select: none;
+    width: 100%;
+}
+.checkbox-left {
+    justify-content: flex-start;
+}
+.checkbox-right {
+    justify-content: flex-end;
+}
+.checkbox img {
+    margin: 2px 4px;
+}
+.checkbox:hover {
+    background-color: var(--ctp-surface0);
+    transition: all 0.2s ease;
+}
+
+.checkbox-click:active {
+    background-color: var(--ctp-surface1);
+    transition: all 0.2s ease;
+}
+
+.selected {
+    background-color: var(--ctp-surface1);
+    transition: all 0.3s ease;
+}
+
+.unselected {
+    background-color: var(--ctp-mantle);
+    transition: all 0.3s ease;
+}

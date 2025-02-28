@@ -1,0 +1,118 @@
+ h4 {
+     padding: 12px 0 0 0;
+ }
+
+ .materials-input {
+     margin-bottom: 10px;
+ }
+
+ .materials-input input {
+     width: 100%;
+     padding: 5px 10px;
+     border: 1px solid var(--ctp-custom);
+     border-radius: 5px;
+     background-color: var(--ctp-base);
+     font-size: 14px;
+ }
+
+ .materials-input input:focus {
+     outline: none;
+     box-shadow: 0 0 5px 0 var(--ctp-custom), inset 0 0 1px 0 var(--ctp-custom);
+ }
+ .itemShowCard {
+     margin-bottom: 20px;
+ }
+
+ table {
+     width: 100%;
+ }
+
+ table tr td {
+     padding: 7px;
+ }
+
+ table tr td span {
+     line-height: 100%;
+     font-size: 16px;
+ }
+
+ /* 设置偶数行背景 */
+ table tr:nth-child(2n) td {
+     background-color: var(--ctp-surface1);
+ }
+
+ /* 设置奇数行背景 */
+ table tr:nth-child(2n-1) td {
+     background-color: var(--ctp-surface0);
+ }
+
+ /* 设置第一行和第二行文字居中 */
+ table tr:nth-child(1),
+ table tr:nth-child(2) {
+     text-align: center;
+ }
+
+ /* 设置第二行图片宽度 */
+ table tr:nth-child(2) img {
+     width: 50%;
+     padding: 5% 0;
+ }
+
+ /* 设置非一二行 第一列宽度 */
+ table tr:not(:nth-child(1)):not(:nth-child(2)) td:nth-child(1) {
+     width: 25%;
+     padding-left: 10px;
+ }
+
+ /* 设置非一二行 图片宽度 */
+ table tr:not(:nth-child(1)):not(:nth-child(2)) img {
+     width: 16px;
+ }
+
+ /* 完整数值和平均数值的样式 */
+ .value-selected {
+     text-align: center;
+     background-color: var(--ctp-surface1) !important;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+     cursor: pointer;
+ }
+
+ .value-unselected {
+     text-align: center;
+     background-color: var(--ctp-surface0) !important;
+     cursor: pointer;
+ }
+
+ /* 设置星级属性表格的样式 */
+ table tr.level-attr td:nth-child(2)>span {
+     display: inline-block;
+     width: 20%;
+ }
+
+ /* 淡入淡出动画 */
+ .fade-enter-active,
+ .fade-leave-active {
+     transition: all 0.2s ease;
+ }
+
+ .fade-enter-from,
+ .fade-leave-to {
+     opacity: 0;
+     transform: translateY(10px);
+ }
+
+ /* 如果希望左右滑动效果 */
+ .slide-enter-active,
+ .slide-leave-active {
+     transition: all 0.2s ease;
+ }
+
+ .slide-enter-from {
+     opacity: 0;
+     transform: translateX(20px);
+ }
+
+ .slide-leave-to {
+     opacity: 0;
+     transform: translateX(-20px);
+ }

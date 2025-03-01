@@ -23,6 +23,14 @@
                         </div>
                         <hr>
                     </li>
+                    <li>
+                        <h4>清除所有缓存(localStorage)</h4>
+                        <p>包括主题色、材料列表、装备方案列表、一些选项缓存等，可以在浏览器查看，不同浏览器查看方式不一样</p>
+                        <p>比如火狐浏览器>f12>存储>本地存储</p>
+                        <div class="theme-color" @click="clearLocalStorage">
+                            <span>清除缓存</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -74,6 +82,12 @@
         document.documentElement.setAttribute('data-theme', theme_color.value)
         document.documentElement.style.setProperty('--ctp-custom', `var(--ctp-${customColor.value})`)
     })
+
+    // 清除缓存
+    const clearLocalStorage = () => {
+        localStorage.clear()
+        location.reload()
+    }
 </script>
 
 <style scoped>

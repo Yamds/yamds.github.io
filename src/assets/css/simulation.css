@@ -55,11 +55,35 @@ img {
     align-items: center;
     gap: 8px;
 }
-
+.copy-input>input,
+.armor-list-left>input {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--ctp-mantle);
+    color: var(--ctp-text);
+    padding: 5px 8px;
+    box-sizing: border-box;
+    display: inline;
+    min-width: 0;
+    flex: 1;
+}
+.copy-input>input,
+.armor-list-left>input:focus {
+    outline: none;
+}
 .armor-list-right {
+    margin-left: auto;
+    padding-right: 10px;
+}
+.armor-list-right>span {
+    color: var(--ctp-surface2);
+}
+.armor-list-right:hover>span {
+    color: var(--ctp-text);
+}
+.checkbox-left {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
 }

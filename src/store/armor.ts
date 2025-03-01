@@ -121,12 +121,21 @@ export const useArmorStore = defineStore('armor', () => {
             })
             
             let id = parseInt(localStorage.getItem('simulation-list-id') || '0')
-            id++
-            localStorage.setItem('simulation-list-id', id.toString())
+            if(!selected_armor.value.id) {
+                id++
+                localStorage.setItem('simulation-list-id', id.toString())
+            }else {
+                id = selected_armor.value.id
+            }
+
+            let name = '方案' + id  
+            if(selected_armor.value.name) {
+                name = selected_armor.value.name
+            }
 
             simulation_list.value.push({
                 id: id,
-                name: '方案' + id,
+                name: name,
                 desc: '方案' + id + ': ' + '描述',
                 armor: selected_armor.value.armor,
                 material: selected_armor.value.material
@@ -151,6 +160,16 @@ export const useArmorStore = defineStore('armor', () => {
             message: '方案列表已清空~',
             type: 'info'
         })
+    }
+    function deleteArmor(id: number) {
+        emitter.emit('send-tips', {
+            title: '提示',
+            message: simulation_list.value.find(item => item.id == id)?.name + '方案已删除~',
+            type: 'info'
+        })
+        simulation_list.value = simulation_list.value.filter(item => item.id !== id)
+        localStorage.setItem('simulation-list', JSON.stringify(simulation_list.value))
+        
     }
 
     // 切换 添加材料 模式
@@ -225,6 +244,7 @@ export const useArmorStore = defineStore('armor', () => {
         deleteList,
         selectItem,
         addArmorToList,
-        delArmorList
+        delArmorList,
+        deleteArmor
     }
 })

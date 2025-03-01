@@ -30,7 +30,7 @@
 }
 
 .selected {
-    background-color: var(--ctp-surface1);
+    background-color: var(--ctp-surface1) !important;
     transition: all 0.3s ease;
 }
 

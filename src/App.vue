@@ -21,7 +21,7 @@ import NavBar from './components/NavBar.vue'
 import MaterialsSearch from './pages//MaterialsSearch.vue'
 import Info from './pages/Info.vue'
 import Settings from './pages/Settings.vue'
-import Tips from './components/tools/Tips.vue'
+import Tips from './utils/Tips.vue'
 
 export default {
     name: 'App',

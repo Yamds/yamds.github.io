@@ -41,9 +41,9 @@ import { ref, onMounted, onUnmounted } from 'vue'
             let mouseY_relative = mouseY.value - imgTop;
 
             // 放大镜的宽高
-            if (big.value && big.value?.offsetWidth && big.value?.offsetHeight) {
-                const scale = 25; // 对应500%的放大比例
-                const originalWidth = original.value.offsetWidth;
+            if (big.value && original.value && big.value.offsetWidth && big.value.offsetHeight) {
+                const scale = 5; // 修正比例系数（25→5对应500%）
+                const originalWidth = original.value.offsetWidth; // 现在已通过空值校验
                 
                 // 计算相对位置百分比
                 const percentX = (mouseX_relative / originalWidth) * 100;

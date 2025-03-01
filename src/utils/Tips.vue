@@ -22,7 +22,7 @@
 import { ref, provide } from 'vue'
 
 let idCounter = 0
-const tips = ref<{ 
+let tips = ref<{ 
     id: number, 
     title: string, 
     message: string, 
@@ -30,7 +30,7 @@ const tips = ref<{
     leaving?: boolean  // 新增leaving状态
 }[]>([])
 
-const iconClass = (type: string) => {
+let iconClass = (type: string) => {
     switch (type) {
         case 'info': return 'bi-info-circle';
         case 'success': return 'bi-check-circle';
@@ -41,16 +41,20 @@ const iconClass = (type: string) => {
 }
 
 function addTips(title: string, message: string, type: string = 'info') {
-    const id = idCounter++
+    let id = idCounter++
     tips.value.push({ id, title, message, type })
     setTimeout(() => removetips(id), 5000)
-    if(tips.value.length > 7) {
+    // 判断是否是移动设备
+    let isMobile = window.innerWidth <= 768
+    // 移动设备最多显示2条，桌面设备最多显示7条
+    let maxTips = isMobile ? 1 : 7
+    if (tips.value.length > maxTips) {
         removetips(tips.value[0].id)
     }
 }
 
-const removetips = (id: number) => {
-    const index = tips.value.findIndex(n => n.id === id)
+let removetips = (id: number) => {
+    let index = tips.value.findIndex(n => n.id === id)
     if (index !== -1) {
         // 1. 先标记为leaving状态触发动画
         tips.value[index].leaving = true

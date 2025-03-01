@@ -6,6 +6,7 @@ import MaterialsSearch from '../pages/MaterialsSearch.vue'
 import Settings from '../pages/Settings.vue'
 import Info from '../pages/Info.vue'
 import Simulation from '../pages/Simulation.vue'
+import Map from '../pages/Map.vue'
 
 let router = createRouter({
     history:createWebHistory(),
@@ -20,6 +21,12 @@ let router = createRouter({
             name: "simulation",
             path: "/simulation",
             component: Simulation,
+            meta: {KeepAlive: true}
+        },
+        {
+            name: "map",
+            path: "/map",
+            component: Map,
             meta: {KeepAlive: true}
         },
         {

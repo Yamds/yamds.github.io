@@ -3,19 +3,19 @@
         <h2>新增装备</h2>
         <div>
             <div class="row gx-3 gy-2">
-                <div class="col-md-6">
+                <div class="col-md-6 col-6">
                     <div class="checkbox" title="请返回材料图鉴点击添加" @click="useArmorStore().toggleAddMode" :class="useArmorStore().addMode?'selected':'unselected'">
                         <img src="/img/attr/maoxianrenwu1_3.png" alt="">
                         <span>添加材料</span>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-6">
                     <div class="checkbox checkbox-click" @click="useArmorStore().deleteList">
                         <img src="/img/attr/maoxianrenwu1_4.png" alt="">
                         <span>清除列表</span>
                     </div>
                 </div>
-                <div class="col-md-2" v-for="index in 5" :key="index">
+                <div class="col-md-2 col-auto" v-for="index in 5" :key="index">
                     <div class="checkbox"  @click="useArmorStore().selected_star = index" :class="useArmorStore().selected_star === index ? 'selected' : 'unselected'">
                         <span>{{ index }}星</span>
                     </div>

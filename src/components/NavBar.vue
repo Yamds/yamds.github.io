@@ -14,10 +14,15 @@
             </li>
             <li :class="{ active: active_web == 3 }">
                 <keep-alive>
-                    <RouterLink :to="{ name: 'settings' }">设置</RouterLink>
+                    <RouterLink :to="{ name: 'map' }">地图</RouterLink>
                 </keep-alive>
             </li>
             <li :class="{ active: active_web == 4 }">
+                <keep-alive>
+                    <RouterLink :to="{ name: 'settings' }">设置</RouterLink>
+                </keep-alive>
+            </li>
+            <li :class="{ active: active_web == 5 }">
                 <keep-alive>
                     <RouterLink :to="{ name: 'info' }">说明</RouterLink>
                 </keep-alive>
@@ -48,11 +53,14 @@ const setActiveWebByRoute = () => {
         case 'simulation':
             active_web.value = 2;
             break;
-        case 'settings':
+        case 'map':
             active_web.value = 3;
             break;
-        case 'info':
+        case 'settings':
             active_web.value = 4;
+            break;
+        case 'info':
+            active_web.value = 5;
             break;
         default:
             active_web.value = 1;

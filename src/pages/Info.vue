@@ -20,26 +20,12 @@
                 </li>
                 <li>
                     <hr>
-                    <p>
-                        属性筛选中的"包含"按钮，用来查找同时拥有多个属性的材料<br>
-                        例如你选中物暴击和物暴伤，那么所有同时含有物暴击和物暴伤的材料都会被筛选出来<br>
-                    </p>
-                </li>
-                <li>
-                    <hr>
-                    <p>
-                        技能暂时没有具体数值qaq <br>
-                        参考价格为功勋*30，但是具体价值会随稀有度变化，仅供参考
-                    </p>
-                </li>
-                <li>
-                    <hr>
                     <p>一些链接：<br>
                         &emsp;主题颜色样式: <a href="https://catppuccin.com/palette/" target="_blank">catppuccin</a><br>
                         &emsp;使用的技术: <a href="https://cn.vuejs.org/" target="_blank">Vue3</a> + <a href="https://getbootstrap.com/" target="_blank">Bootstrap5</a><br>
                         &emsp;营火官方群: <a href="#" style="pointer-events:none;">366609833</a>(无法分享，自行加入)<br>
                         &emsp;营火萌新群: <a href="https://qm.qq.com/q/6aaB7w4oTK" target="_blank">[营火]萌新组队互助群</a><br>
-                        &emsp;本项目的地址: <a href="https://github.com/Yamds/yamds.github.io" target="_blank">yamds.github.io</a><br>
+                        &emsp;本项目的地址: <a href="https://github.com/Yamds/yamds.github.io" target="_blank">yamds.github.io</a><span style="color: var(--ctp-overlay2);">欢迎点个starqaq</span><br>
                         &emsp;作者B站: <a href="https://space.bilibili.com/220675708" target="_blank">@Yamds</a>
                     </p>
                 </li>

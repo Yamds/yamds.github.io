@@ -3,7 +3,7 @@
         <h2>锻造面板</h2>
         <div class="row gx-2 gy-2">
             <div class="col-md-auto col-auto">
-                <div class="checkbox checkbox-click" @click="useArmorStore().selected_list = []; useArmorStore().selected_armor.material = []">
+                <div class="checkbox checkbox-click" @click="useArmorStore().selected_list = []; useArmorStore().selected_armor.material = []; useArmorStore().select_index = -1">
                     <img src="/img/attr/maoxianrenwu1_4.png">
                     <span>清除</span>
                 </div>

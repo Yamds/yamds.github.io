@@ -19,17 +19,17 @@
                 <span>删除所有方案</span>
             </div>
             <hr>
-            <div :class="[select_index == index ? 'selected' : 'unselected', 'col-md-12 checkbox checkbox-left']"
+            <div :class="[useArmorStore().select_index == index ? 'selected' : 'unselected', 'col-md-12 checkbox checkbox-left']"
                 v-for="(item, index) in useArmorStore().simulation_list" :key="item.id" @click="showArmor(item, index)">
                 <!-- 装备图标 -->
                 <div class="armor-list-left">
                     <!-- <span>{{ index + 1 }}</span> -->
                     <img :src="`/img/armor/${item.armor.icon}.png`" alt="">
 
-                    <span v-show="!changeMode || select_index != index" @click="changeModeClick(index)">{{ item.name
+                    <span v-show="!changeMode || useArmorStore().select_index != index" @click="changeModeClick(index)">{{ item.name
                         }}</span>
-                    <input type="text" v-model="item.name" v-if="changeMode && select_index == index" @click.stop
-                        @blur="changeMode = false" @keydown.enter="changeMode = false">
+                    <input type="text" v-model="input_name" v-if="changeMode && useArmorStore().select_index == index" @click.stop
+                        @focus="changeNameStart(item.name)" @blur="changeNameEnd(item)" @keydown.enter="changeNameEnd(item)">
                 </div>
                 <div class="armor-list-right" @click="useArmorStore().deleteArmor(item.id)">
                     <span>x</span>
@@ -58,9 +58,20 @@ import materials from '../../assets/json/materials.json';
 import emitter from '../../utils/emitter';
 
 
-let select_index = ref<number>(-1)
 let changeMode = ref<boolean>(false)
 let importData = ref<string>("")
+let input_name = ref<string>("")
+
+
+function changeNameStart(name: string) {
+    input_name.value = name
+}
+
+function changeNameEnd(item: any) {
+    changeMode.value = false
+    item.name = input_name.value
+    input_name.value = ""
+}
 
 // 导入内容
 function addImportData() {
@@ -95,11 +106,8 @@ function addImportData() {
             material: material
         }
         // console.log(data)
-        let id = parseInt(localStorage.getItem('simulation-list-id') || '0')
-        id++
-        localStorage.setItem('simulation-list-id', id.toString())
+
         Object.assign(useArmorStore().selected_armor, {
-            id: id,
             name: data.name,
             desc: data.desc,
             armor: data.armor,
@@ -108,7 +116,7 @@ function addImportData() {
         
         useArmorStore().selected_list = data.material.map((m: any) => m.material) as MaterialsInter[]
         useArmorStore().addArmorToList()
-        select_index.value = -1
+        useArmorStore().select_index = -1
         importData.value = ""
     }
 }
@@ -116,15 +124,15 @@ function addImportData() {
 
 // 要复制的内容
 const copyData = computed(() => {
-    if (useArmorStore().simulation_list[select_index.value] != null) {
-        let materialString = useArmorStore().simulation_list[select_index.value].material
+    if (useArmorStore().simulation_list[useArmorStore().select_index] != null) {
+        let materialString = useArmorStore().simulation_list[useArmorStore().select_index].material
             .map((m: any) => m.material.name + m.star + "x")
             .reduce((acc: { [key: string]: number }, curr: string) => {
                 acc[curr] = (acc[curr] || 0) + 1;
                 return acc;
             }, {});
-        return (useArmorStore().simulation_list[select_index.value].name + " " +
-            useArmorStore().simulation_list[select_index.value].armor.name + " " +
+        return (useArmorStore().simulation_list[useArmorStore().select_index].name + " " +
+            useArmorStore().simulation_list[useArmorStore().select_index].armor.name + " " +
             Object.entries(materialString).map(([key, value]) => `${key}*${value}`).join(" "));
     }
 });
@@ -132,7 +140,7 @@ const copyData = computed(() => {
 
 
 function changeModeClick(index: number) {
-    if (select_index.value == index) {
+    if (useArmorStore().select_index == index) {
         changeMode.value = true
     } else {
         changeMode.value = false
@@ -140,7 +148,7 @@ function changeModeClick(index: number) {
 }
 
 function showArmor(item: any, index: number) {
-    if (select_index.value != index) {
+    if (useArmorStore().select_index != index) {
         Object.assign(useArmorStore().selected_armor, {
             id: item.id,
             name: item.name,
@@ -150,10 +158,10 @@ function showArmor(item: any, index: number) {
         })
         useArmorStore().selected_list = item.material.map((m: any) => m.material) as MaterialsInter[]
     }
-    if (select_index.value != index) {
+    if (useArmorStore().select_index != index) {
         changeMode.value = false
     }
-    select_index.value = index
+    useArmorStore().select_index = index
 }
 
 watch(useArmorStore().simulation_list, (newVal: any) => {

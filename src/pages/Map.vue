@@ -74,6 +74,7 @@ onUnmounted(() => {
 <style scoped>
     .original img {
         width: 100%;
+        background-color: #0A0017;
     }
     .big {
         position: relative;

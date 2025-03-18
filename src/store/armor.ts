@@ -5,10 +5,10 @@ import { type MaterialsInter, type ArmorInter, type SelectedArmorMaterialInter, 
 import { material_type, material_attribute, material_skill } from '../assets/json/material_type.json'
 import emitter from '../utils/emitter'
 
-export let useArmorStore = defineStore('armor', () => {   
+export let useArmorStore = defineStore('armor', () => {
     // 添加过来的所有材料
     // 修改初始化逻辑，确保是数组类型
-    let material_list = ref < MaterialsInter[] > (JSON.parse(localStorage.getItem('simulation-material-list') || '[]'))
+    let material_list = ref<MaterialsInter[]>(JSON.parse(localStorage.getItem('simulation-material-list') || '[]'))
     // 所有材料中 选中的材料
     let selected_list = ref<MaterialsInter[]>([])
     // 获取装备类型
@@ -75,7 +75,7 @@ export let useArmorStore = defineStore('armor', () => {
         }));
 
         // 摘取所选材料(材料，星级)
-        if(selected_armor.value.material != null) {
+        if (selected_armor.value.material != null) {
             selected_armor.value.material.forEach(({ material, star }) => {
                 let star_data = material.star[star - 1];
                 // 遍历选中材料的属性值
@@ -117,20 +117,20 @@ export let useArmorStore = defineStore('armor', () => {
     // 添加方案
     function addArmorToList() {
         // 判断是否所有槽位都满了
-        if(Object.values(slot_calc.value).every(item => item == 0)) {
+        if (Object.values(slot_calc.value).every(item => item == 0)) {
             emitter.emit('send-tips', {
                 title: '提示',
                 message: '方案添加成功~',
                 type: 'success'
             })
-            
+
             let id = parseInt(localStorage.getItem('simulation-list-id') || '0')
             id++
             localStorage.setItem('simulation-list-id', id.toString())
 
-            let name = '方案' + id  
+            let name = '方案' + id
             console.log(name)
-            if(selected_armor.value.name != null && selected_armor.value.name != '') {
+            if (selected_armor.value.name != null && selected_armor.value.name != '') {
                 name = selected_armor.value.name
                 console.log(name)
             }
@@ -161,7 +161,7 @@ export let useArmorStore = defineStore('armor', () => {
     function delArmorList() {
         simulation_list.value = []
         localStorage.removeItem('simulation-list')
-        
+
         emitter.emit('send-tips', {
             title: '提示',
             message: '方案列表已清空~',
@@ -176,7 +176,7 @@ export let useArmorStore = defineStore('armor', () => {
         })
         simulation_list.value = simulation_list.value.filter(item => item.id !== id)
         localStorage.setItem('simulation-list', JSON.stringify(simulation_list.value))
-        
+
     }
 
     // 切换 添加材料 模式
@@ -189,7 +189,7 @@ export let useArmorStore = defineStore('armor', () => {
                 message: '请返回材料图鉴选择材料吧~',
                 type: 'info'
             })
-        }else {
+        } else {
             emitter.emit('send-tips', {
                 title: '添加模式已关闭',
                 message: '材料预览面板重新启用~',

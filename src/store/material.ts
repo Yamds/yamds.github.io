@@ -91,7 +91,7 @@ export const useMaterialStore = defineStore('material', () => {
                 message: '材料已添加至锻造面板~',
                 type: 'info'
             })
-        }else {
+        } else {
             if (showCardPos == 1) {
                 version.value.item1++
                 showItemCard.value.item1 = item
@@ -162,6 +162,6 @@ export const useMaterialStore = defineStore('material', () => {
         showItem,
         selectAll,
         selectSingle,
-        
+
     }
 })

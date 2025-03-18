@@ -1,56 +1,21 @@
 <template>
     <!-- 导航栏 -->
-    <!-- <div class="navbar col-md-12">
-        <ul>
-            <li :class="{ active: active_web == 1 }">
-                <keep-alive>
-                    <RouterLink :to="{ name: 'materials-search' }">查询材料</RouterLink>
-                </keep-alive>
-            </li>
-            <li :class="{ active: active_web == 2 }">
-                <keep-alive>
-                    <RouterLink :to="{ name: 'simulation' }">装备模拟</RouterLink>
-                </keep-alive>
-            </li>
-            <li :class="{ active: active_web == 3 }">
-                <keep-alive>
-                    <RouterLink :to="{ name: 'map' }">地图</RouterLink>
-                </keep-alive>
-            </li>
-            <li :class="{ active: active_web == 4 }">
-                <keep-alive>
-                    <RouterLink :to="{ name: 'settings' }">设置</RouterLink>
-                </keep-alive>
-            </li>
-            <li :class="{ active: active_web == 5 }">
-                <keep-alive>
-                    <RouterLink :to="{ name: 'info' }">说明</RouterLink>
-                </keep-alive>
-            </li>
-        </ul>
-    </div> -->
     <el-row>
-        <el-cow :span="24">qwq</el-cow>
-        <el-cow :span="24">
+        <el-col :span="isMobile==true? 12: 24">
             <el-menu
                 active-text-color=var(--ctp-text)
                 background-color=var(--ctp-base)
-                class="el-menu-vertical-demo"
-                default-active="1"
+                :mode="isMobile==true? 'vertical':'horizontal'"
+                :class="isMobile==true? 'el-menu':'el-menu-xs'"
+                default-active="materials-search"
                 text-color="#fff"
+                @select="handleMenuSelect"
             >
-            <el-menu-item index="1">
-                <el-icon><icon-menu /></el-icon>
-                    <keep-alive>
-                        <RouterLink :to="{ name: 'materials-search' }">查询材料</RouterLink>
-                    </keep-alive>
-                </el-menu-item>
-                <el-menu-item index="2">
-                <el-icon><icon-menu /></el-icon>
-                <span>Navigator Two</span>
+                <el-menu-item v-for="item in guide" :key="item.name" :index="item.name">
+                    <span>{{item.desc}}</span>
                 </el-menu-item>
             </el-menu>
-        </el-cow>
+        </el-col>
     </el-row>
 </template>
 
@@ -61,90 +26,54 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue";
-import { useRoute, RouterLink } from "vue-router";
+import { ref, watch, computed, onMounted} from "vue";
+import { useRoute, useRouter, RouterLink } from "vue-router";
 import emitter from "../utils/emitter";
-let active_web = ref(1)
-let route = useRoute()
+let router = useRouter()
+let isMobile = ref(false)
+let guide = [
+    {name: "materials-search", desc: "查询材料", icon: "Search"},
+    {name: "simulation", desc: "装备模拟", icon: "Edit"},
+    {name: "map", desc: "地图", icon: "Guide"},
+    {name: "settings", desc: "设置", icon: "Setting"},
+    {name: "info", desc: "说明", icon: "Star"},
+]
 
-// 根据当前路由设置active_web
-const setActiveWebByRoute = () => {
-    switch (route.name) {
-        case 'materials-search':
-            active_web.value = 1;
-            break;
-        case 'simulation':
-            active_web.value = 2;
-            break;
-        case 'map':
-            active_web.value = 3;
-            break;
-        case 'settings':
-            active_web.value = 4;
-            break;
-        case 'info':
-            active_web.value = 5;
-            break;
-        default:
-            active_web.value = 1;
-    }
-};
+// 设置当前激活的web
+function handleMenuSelect(routeName:any) {
+    router.push({ name: routeName})
+}
 
-// 初始化时设置
-onMounted(() => {
-    setActiveWebByRoute();
-});
-
-// 监听路由变化
-watch(() => route.name, () => {
-    setActiveWebByRoute();
-});
-
-// 向app传递选择的web
-watch(active_web, (value) => {
-    emitter.emit("send-active_web", value)
+emitter.on('send-isMobile', (value:any) => {
+    isMobile.value = value
 })
 </script>
 
 <style scoped>
-.el-menu-vertical-demo>*:hover {
+.el-menu>.el-menu-item:hover {
+    background-color: var(--ctp-surface0);
+}
+
+.el-menu>.el-menu-item span {
+    font-size: 1.3em;
+    margin-left: 0.7em;
+}
+.el-menu>.el-menu-item.is-active {
     background-color: var(--ctp-surface1);
 }
-/* .navbar ul {
-    border-bottom: 1px solid var(--ctp-custom);
-    width: 100%;
-    padding: 0;
+.el-menu-xs {
+    height: 30px;
+    margin-bottom: 20px;
 }
-
-.navbar li {
-    list-style: none;
-    display: inline-block;
-    border-radius: 5px 5px 0 0;
-    cursor: pointer;
+.el-menu-xs>.el-menu-item {
+    /* margin-left: 0.1em !important; */
+    padding: 5px;
+    border-radius: 4px 4px 0 0;
 }
-
-.navbar li:not(.active):hover {
-    background-color: var(--ctp-surface0);
-    border: 1px solid var(--ctp-custom);
-    border-bottom: none;
-    margin: 0 -1px;
-    transition: background-color 0.3s ease;
+.el-menu-xs>.el-menu-item span {
+    font-size: 1em !important;
+    line-height: 26px;
+    margin: 0;
+    padding: 10px;
 }
-
-.navbar li a {
-    display: inline-block;
-    padding: 0.7em 0.7em 0.3em 0.7em;
-    text-decoration: none !important;
-    font-size: 1.3em;
-    color: var(--ctp-text);
-    text-align: center;
-    line-height: 1.4;
-}
-
-.active {
-    border: 1px solid var(--ctp-custom);
-    border-bottom: none;
-    box-shadow: 0 2px 0 0 var(--ctp-base);
-    margin: 0 -1px;
-} */
 </style>

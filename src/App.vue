@@ -1,43 +1,24 @@
 <template>
     <div id="app" class="container-fluid">
         <Tips ref="tips" />
-        <!-- <div class="row">
-            <div class="col-10 offset-1">
-                <h1 id="title">营火查询工具</h1>
-                <button @click="addTips('测试title', '测试tips', 'info')">添加tips</button>
-                <button @click="addTips('测asdaswertle', 'asdasddwqe', 'error')">添加error</button>
-                <NavBar />
-                <RouterView></RouterView>
-                
-            </div>
-        </div> -->
         <el-container>
-            <el-aside>
-                <NavBar />
-            </el-aside>
+            <el-header>
+                <h1 id="title">营火查询工具</h1>
+            </el-header>
             <el-container>
-                <el-header>
-
-                </el-header>
+                <el-aside v-if="isMobile">
+                    <NavBar />
+                </el-aside>
                 <el-main>
+                    <NavBar v-if="!isMobile" />
                     <RouterView></RouterView>
                 </el-main>
             </el-container>
-            
         </el-container>
     </div>
 </template>
 
 <script lang="ts">
-import './assets/css/theme.scss'
-import { RouterView } from 'vue-router';
-
-import NavBar from './components/NavBar.vue'
-import MaterialsSearch from './pages//MaterialsSearch.vue'
-import Info from './pages/Info.vue'
-import Settings from './pages/Settings.vue'
-import Tips from './utils/Tips.vue'
-
 export default {
     name: 'App',
     components: {
@@ -51,16 +32,35 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { ref, provide, onMounted } from 'vue'
+import { ref, provide, onMounted, onUnmounted } from 'vue'
 import emitter from './utils/emitter'
+import './assets/css/theme.scss'
+import { RouterView } from 'vue-router';
+import NavBar from './components/NavBar.vue'
+import MaterialsSearch from './pages//MaterialsSearch.vue'
+import Info from './pages/Info.vue'
+import Settings from './pages/Settings.vue'
+import Tips from './utils/Tips.vue'
 
-const tips = ref<any>(null)
+let tips = ref<any>(null)
+let isMobile = ref(true)
+
+function isMobileCalc() {
+    isMobile.value = window.innerWidth >= 768
+    emitter.emit('send-isMobile', isMobile.value)
+}
 
 // 提供全局调用方法
 onMounted(() => {
     emitter.on('send-tips', (value: any) => {
         tips.value?.addTips(value.title, value.message, value.type)
     })
+    window.addEventListener('resize', isMobileCalc);
+    isMobileCalc()
+})
+
+onUnmounted(() => {
+    window.addEventListener('resize', isMobileCalc);
 })
 </script>
 
@@ -72,5 +72,9 @@ onMounted(() => {
 #title {
     margin: 0.67em 0;
     /* font-size: 2em */
+}
+
+.el-header {
+    margin-bottom: 2em;
 }
 </style>

@@ -1,9 +1,11 @@
 li {
     list-style: none;
 }
+
 h2 {
     margin: 10px 0;
 }
+
 img {
     width: 1.4em;
 }
@@ -13,6 +15,7 @@ img {
     display: flex;
     justify-content: space-between;
 }
+
 .list-right {
     display: flex;
     flex-direction: row-reverse;
@@ -55,6 +58,7 @@ img {
     align-items: center;
     gap: 8px;
 }
+
 .copy-input>input,
 .armor-list-left>input {
     width: 100%;
@@ -68,20 +72,25 @@ img {
     min-width: 0;
     flex: 1;
 }
+
 .copy-input>input,
 .armor-list-left>input:focus {
     outline: none;
 }
+
 .armor-list-right {
     margin-left: auto;
     padding-right: 10px;
 }
+
 .armor-list-right>span {
     color: var(--ctp-surface2);
 }
+
 .armor-list-right:hover>span {
     color: var(--ctp-text);
 }
+
 .checkbox-left {
     display: flex;
     justify-content: space-between;

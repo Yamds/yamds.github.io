@@ -1,441 +1,473 @@
 {
-  "material_level": [{
-    "id": 1,
-    "name": "一阶",
-    "icon": "level1"
-  }, {
-    "id": 2,
-    "name": "二阶",
-    "icon": "level2"
-  }, {
-    "id": 3,
-    "name": "三阶",
-    "icon": "level3"
-  }],
-  "material_type": [{
-    "id": 1,
-    "name": "丝绳",
-    "icon": "sisheng",
-    "word": "rope"
-  }, {
-    "id": 2,
-    "name": "布匹",
-    "icon": "bupi",
-    "word": "silk"
-  }, {
-    "id": 3,
-    "name": "碎块",
-    "icon": "suikuai",
-    "word": "shard"
-  }, {
-    "id": 4,
-    "name": "残骸",
-    "icon": "canhai",
-    "word": "relic"
-  }, {
-    "id": 5,
-    "name": "兽核",
-    "icon": "shouhe",
-    "word": "core"
-  }],
-  "material_attribute": [{
-    "id": 1,
-    "name": "生命",
-    "icon": "life"
-  }, {
-    "id": 2,
-    "name": "体力",
-    "icon": "mana"
-  }, {
-    "id": 3,
-    "name": "耐力",
-    "icon": "mana_restores"
-  }, {
-    "id": 4,
-    "name": "攻击",
-    "icon": "damage"
-  }, {
-    "id": 5,
-    "name": "物暴击",
-    "icon": "double1"
-  }, {
-    "id": 6,
-    "name": "物暴伤",
-    "icon": "double2"
-  }, {
-    "id": 7,
-    "name": "物穿",
-    "icon": "penetrates1"
-  }, {
-    "id": 8,
-    "name": "攻速",
-    "icon": "attackspeed"
-  }, {
-    "id": 9,
-    "name": "法强",
-    "icon": "magic"
-  }, {
-    "id": 10,
-    "name": "法暴击",
-    "icon": "magicdouble1"
-  }, {
-    "id": 11,
-    "name": "法暴伤",
-    "icon": "magicdouble2"
-  }, {
-    "id": 12,
-    "name": "法穿",
-    "icon": "penetrates2"
-  }, {
-    "id": 13,
-    "name": "治疗",
-    "icon": "treatment"
-  }, {
-    "id": 14,
-    "name": "物抗",
-    "icon": "defense1"
-  }, {
-    "id": 15,
-    "name": "魔抗",
-    "icon": "defense2"
-  }, {
-    "id": 16,
-    "name": "卸力",
-    "icon": "xieli"
-  }, {
-    "id": 17,
-    "name": "嘲讽",
-    "icon": "chaofeng"
-  }, {
-    "id": 18,
-    "name": "格挡",
-    "icon": "gedang"
-  }, {
-    "id": 19,
-    "name": "充能",
-    "icon": "energy"
-  }, {
-    "id": 20,
-    "name": "移速",
-    "icon": "speed"
-  }],
-"material_skill": [
-  {
-    "id": 1,
-    "name": "反击",
-    "icon": "fanji",
-    "desc": "最大生命值低于5000时受到伤害会反击目标"
-  },
-  {
-    "id": 2,
-    "name": "生长",
-    "icon": "shengzhang",
-    "desc": "治疗效率增加"
-  },
-  {
-    "id": 3,
-    "name": "迅羽",
-    "icon": "xunyu",
-    "desc": "移动速度增加"
-  },
-  {
-    "id": 4,
-    "name": "韧劲",
-    "icon": "renjin",
-    "desc": "生命值低时获得伤害减免"
-  },
-  {
-    "id": 5,
-    "name": "盘根",
-    "icon": "pangen",
-    "desc": "体力值低时恢复体力（冷却120秒）"
-  },
-  {
-    "id": 6,
-    "name": "结茧",
-    "icon": "jiejian",
-    "desc": "攻击时禁锢周围目标（冷却30秒）"
-  },
-  {
-    "id": 7,
-    "name": "固化",
-    "icon": "guhua",
-    "desc": "最大生命值低于5000时将物抗数值固定"
-  },
-  {
-    "id": 8,
-    "name": "粘液护盾",
-    "icon": "nianyehudun",
-    "desc": "受到物理伤害减少"
-  },
-  {
-    "id": 9,
-    "name": "翠绿屏障",
-    "icon": "cuiluhudun",
-    "desc": "护盾效率增加"
-  },
-  {
-    "id": 10,
-    "name": "真菌寄宿",
-    "icon": "zhenjunjisu",
-    "desc": "攻击时发射毒孢，命中后造成中毒（60秒冷却）"
-  },
-  {
-    "id": 11,
-    "name": "血之滋味",
-    "icon": "xuezhiziwei",
-    "desc": "生命值减少，攻击力增加"
-  },
-  {
-    "id": 12,
-    "name": "毒液转换",
-    "icon": "duyezhuanhuan",
-    "desc": "数秒内攻击附带魔法伤害（60秒冷却）"
-  },
-  {
-    "id": 13,
-    "name": "淬毒",
-    "icon": "cuidu",
-    "desc": "下次攻击施加中毒（60秒冷却）"
-  },
-  {
-    "id": 14,
-    "name": "疗愈系带",
-    "icon": "liaoyujidai",
-    "desc": "治疗属性增加"
-  },
-  {
-    "id": 15,
-    "name": "诅咒烙印",
-    "icon": "zuzhoulaoyin",
-    "desc": "攻击发射飞弹诅咒敌方（30秒冷却）"
-  },
-  {
-    "id": 16,
-    "name": "叶旋",
-    "icon": "yexuan",
-    "desc": "造成魔法伤害时概率附加中毒"
-  },
-  {
-    "id": 17,
-    "name": "反刺甲片",
-    "icon": "fancijiapian",
-    "desc": "受到物理伤害有几率反弹魔法伤害"
-  },
-  {
-    "id": 18,
-    "name": "横扫之刃",
-    "icon": "hengsaozhiren",
-    "desc": "攻击时，有概率对前方扇形范围造成伤害"
-  },
-  {
-    "id": 19,
-    "name": "振奋",
-    "icon": "zhenfen",
-    "desc": "器伤低于500时将治疗数值固定"
-  },
-  {
-    "id": 20,
-    "name": "柔韧",
-    "icon": "rouren",
-    "desc": "最大生命值低于5000时将魔抗数值固定"
-  },
-  {
-    "id": 21,
-    "name": "反哺",
-    "icon": "fanbu",
-    "desc": "被攻击时有概率回复10格内2个友军生命"
-  },
-  {
-    "id": 22,
-    "name": "自然供养",
-    "icon": "zirangongyang",
-    "desc": "每十秒恢复自身体力"
-  },
-  {
-    "id": 23,
-    "name": "硬化",
-    "icon": "yinghua",
-    "desc": "减少所受的任何伤害"
-  },
-  {
-    "id": 24,
-    "name": "魔力咒文",
-    "icon": "molizhouwen",
-    "desc": "30秒根据法强恢复体力"
-  },
-  {
-    "id": 25,
-    "name": "冒险支配",
-    "icon": "maoxianzhipei",
-    "desc": "器伤低于500时普攻附带额外伤害"
-  },
-  {
-    "id": 26,
-    "name": "自由支配",
-    "icon": "ziyouzhipei",
-    "desc": "最大生命值低于5000且血量较低时每秒回复血量"
-  },
-  {
-    "id": 27,
-    "name": "粘液屏障",
-    "icon": "nianyepingzhang",
-    "desc": "被攻击时获得护盾，护盾值受护甲和魔抗影响（冷却60秒）"
-  },
-  {
-    "id": 28,
-    "name": "撕裂",
-    "icon": "silie",
-    "desc": "每第三次攻击时对前方线性5格内的敌人造成物理伤害"
-  },
-  {
-    "id": 29,
-    "name": "麻痹毒素",
-    "icon": "mabidusu",
-    "desc": "攻击时，有概率对前方5格内的5个目标造成中毒，使其受到持续魔法伤害"
-  },
-  {
-    "id": 30,
-    "name": "再生细胞",
-    "icon": "zaishengxibao1",
-    "desc": "被攻击时叠加层数，每100层回复最大生命值（冷却90秒）"
-  },
-  {
-    "id": 31,
-    "name": "愤怒器皿",
-    "icon": "fennuqimin",
-    "desc": "攻击时，叠加层数，100层时恢复自身生命值"
-  },
-  {
-    "id": 32,
-    "name": "爆炸毒孢",
-    "icon": "baozhadubao",
-    "desc": "攻击时投掷蘑菇并生成毒雾，每秒持续造成魔法伤害（冷却60秒）"
-  },
-  {
-    "id": 33,
-    "name": "诅咒炎弹",
-    "icon": "zuzhouyandan",
-    "desc": "每第三次攻击额外发射一颗造成魔法伤害的飞弹"
-  },
-  {
-    "id": 34,
-    "name": "毒液溅射",
-    "icon": "duyejianshe",
-    "desc": "每隔一段时间攻击对前方敌人造成持续中毒效果"
-  },
-  {
-    "id": 35,
-    "name": "援济",
-    "icon": "yuanji",
-    "desc": "每三次攻击治疗15格内一个友方生命"
-  },
-  {
-    "id": 36,
-    "name": "钢化体肤",
-    "icon": "ganghuatifu",
-    "desc": "被攻击时给予自己持续一段时间的伤害免减（60秒冷却）"
-  },
-  {
-    "id": 37,
-    "name": "旋风斩",
-    "icon": "xuanfengzhan",
-    "desc": "攻击时，有概率对自身周围5格8个目标造成物理伤害"
-  },
-  {
-    "id": 38,
-    "name": "腐蚀之毒",
-    "icon": "fushizhidu",
-    "desc": "每第三次攻击额外造成真实伤害"
-  },
-  {
-    "id": 39,
-    "name": "万物生长",
-    "icon": "wanwushengzhang",
-    "desc": "攻击时叠加层数，每100层治疗周围友军"
-  },
-  {
-    "id": 40,
-    "name": "倍化体魄",
-    "icon": "beihuatipo",
-    "desc": "被攻击时叠加层数，100层时增加最大生命值，持续30秒"
-  },
-  {
-    "id": 41,
-    "name": "风蚀",
-    "icon": "fengshi",
-    "desc": "器伤低于500时将法强数值固定"
-  },
-  {
-    "id": 42,
-    "name": "彻骨",
-    "icon": "chegu",
-    "desc": "物理伤害附加额外伤害"
-  },
-  {
-    "id": 43,
-    "name": "顽固组织",
-    "icon": "wanguzuzhi",
-    "desc": "物理抗性增加"
-  },
-  {
-    "id": 44,
-    "name": "毒性扩散",
-    "icon": "duxingkuosan",
-    "desc": "中毒伤害增加"
-  },
-  {
-    "id": 45,
-    "name": "锋利",
-    "icon": "fengli",
-    "desc": "器伤低于500时将攻击数值固定"
-  },
-  {
-    "id": 46,
-    "name": "喋血",
-    "icon": "diexue",
-    "desc": "攻击后回复自身生命（60秒冷却）"
-  },
-  {
-    "id": 47,
-    "name": "再生细胞",
-    "icon": "zaishengxibao2",
-    "desc": "最大生命值增加"
-  },
-  {
-    "id": 48,
-    "name": "穿刺注入",
-    "icon": "chuancizhuru",
-    "desc": "提升周期性伤害"
-  },
-  {
-    "id": 49,
-    "name": "捕猎唤醒",
-    "icon": "buliehuanxing",
-    "desc": "当自己生命值低时，攻击敌人会给予自身攻击和移速加成"
-  },
-  {
-    "id": 50,
-    "name": "生息",
-    "icon": "shengxi",
-    "desc": "治疗效率增加"
-  },
-  {
-    "id": 51,
-    "name": "碾压",
-    "icon": "nianya",
-    "desc": "受到攻击后有几率使下次攻击造成范围额外伤害"
-  },
-  {
-    "id": 52,
-    "name": "铁骨",
-    "icon": "tiegu",
-    "desc": "护盾效率增加"
-  },
-  {
-    "id": 53,
-    "name": "诅咒契约",
-    "icon": "zuzhouqiyue",
-    "desc": "下次攻击消耗自身生命并附带高额物理伤害（60秒冷却）"
-  }]
+    "material_level": [
+        {
+            "id": 1,
+            "name": "一阶",
+            "icon": "level1"
+        },
+        {
+            "id": 2,
+            "name": "二阶",
+            "icon": "level2"
+        },
+        {
+            "id": 3,
+            "name": "三阶",
+            "icon": "level3"
+        }
+    ],
+    "material_type": [
+        {
+            "id": 1,
+            "name": "丝绳",
+            "icon": "sisheng",
+            "word": "rope"
+        },
+        {
+            "id": 2,
+            "name": "布匹",
+            "icon": "bupi",
+            "word": "silk"
+        },
+        {
+            "id": 3,
+            "name": "碎块",
+            "icon": "suikuai",
+            "word": "shard"
+        },
+        {
+            "id": 4,
+            "name": "残骸",
+            "icon": "canhai",
+            "word": "relic"
+        },
+        {
+            "id": 5,
+            "name": "兽核",
+            "icon": "shouhe",
+            "word": "core"
+        }
+    ],
+    "material_attribute": [
+        {
+            "id": 1,
+            "name": "生命",
+            "icon": "life"
+        },
+        {
+            "id": 2,
+            "name": "体力",
+            "icon": "mana"
+        },
+        {
+            "id": 3,
+            "name": "耐力",
+            "icon": "mana_restores"
+        },
+        {
+            "id": 4,
+            "name": "攻击",
+            "icon": "damage"
+        },
+        {
+            "id": 5,
+            "name": "物暴击",
+            "icon": "double1"
+        },
+        {
+            "id": 6,
+            "name": "物暴伤",
+            "icon": "double2"
+        },
+        {
+            "id": 7,
+            "name": "物穿",
+            "icon": "penetrates1"
+        },
+        {
+            "id": 8,
+            "name": "攻速",
+            "icon": "attackspeed"
+        },
+        {
+            "id": 9,
+            "name": "法强",
+            "icon": "magic"
+        },
+        {
+            "id": 10,
+            "name": "法暴击",
+            "icon": "magicdouble1"
+        },
+        {
+            "id": 11,
+            "name": "法暴伤",
+            "icon": "magicdouble2"
+        },
+        {
+            "id": 12,
+            "name": "法穿",
+            "icon": "penetrates2"
+        },
+        {
+            "id": 13,
+            "name": "治疗",
+            "icon": "treatment"
+        },
+        {
+            "id": 14,
+            "name": "物抗",
+            "icon": "defense1"
+        },
+        {
+            "id": 15,
+            "name": "魔抗",
+            "icon": "defense2"
+        },
+        {
+            "id": 16,
+            "name": "卸力",
+            "icon": "xieli"
+        },
+        {
+            "id": 17,
+            "name": "嘲讽",
+            "icon": "chaofeng"
+        },
+        {
+            "id": 18,
+            "name": "格挡",
+            "icon": "gedang"
+        },
+        {
+            "id": 19,
+            "name": "充能",
+            "icon": "energy"
+        },
+        {
+            "id": 20,
+            "name": "移速",
+            "icon": "speed"
+        }
+    ],
+    "material_skill": [
+        {
+            "id": 1,
+            "name": "反击",
+            "icon": "fanji",
+            "desc": "最大生命值低于5000时受到伤害会反击目标"
+        },
+        {
+            "id": 2,
+            "name": "生长",
+            "icon": "shengzhang",
+            "desc": "治疗效率增加"
+        },
+        {
+            "id": 3,
+            "name": "迅羽",
+            "icon": "xunyu",
+            "desc": "移动速度增加"
+        },
+        {
+            "id": 4,
+            "name": "韧劲",
+            "icon": "renjin",
+            "desc": "生命值低时获得伤害减免"
+        },
+        {
+            "id": 5,
+            "name": "盘根",
+            "icon": "pangen",
+            "desc": "体力值低时恢复体力（冷却120秒）"
+        },
+        {
+            "id": 6,
+            "name": "结茧",
+            "icon": "jiejian",
+            "desc": "攻击时禁锢周围目标（冷却30秒）"
+        },
+        {
+            "id": 7,
+            "name": "固化",
+            "icon": "guhua",
+            "desc": "最大生命值低于5000时将物抗数值固定"
+        },
+        {
+            "id": 8,
+            "name": "粘液护盾",
+            "icon": "nianyehudun",
+            "desc": "受到物理伤害减少"
+        },
+        {
+            "id": 9,
+            "name": "翠绿屏障",
+            "icon": "cuiluhudun",
+            "desc": "护盾效率增加"
+        },
+        {
+            "id": 10,
+            "name": "真菌寄宿",
+            "icon": "zhenjunjisu",
+            "desc": "攻击时发射毒孢，命中后造成中毒（60秒冷却）"
+        },
+        {
+            "id": 11,
+            "name": "血之滋味",
+            "icon": "xuezhiziwei",
+            "desc": "生命值减少，攻击力增加"
+        },
+        {
+            "id": 12,
+            "name": "毒液转换",
+            "icon": "duyezhuanhuan",
+            "desc": "数秒内攻击附带魔法伤害（60秒冷却）"
+        },
+        {
+            "id": 13,
+            "name": "淬毒",
+            "icon": "cuidu",
+            "desc": "下次攻击施加中毒（60秒冷却）"
+        },
+        {
+            "id": 14,
+            "name": "疗愈系带",
+            "icon": "liaoyujidai",
+            "desc": "治疗属性增加"
+        },
+        {
+            "id": 15,
+            "name": "诅咒烙印",
+            "icon": "zuzhoulaoyin",
+            "desc": "攻击发射飞弹诅咒敌方（30秒冷却）"
+        },
+        {
+            "id": 16,
+            "name": "叶旋",
+            "icon": "yexuan",
+            "desc": "造成魔法伤害时概率附加中毒"
+        },
+        {
+            "id": 17,
+            "name": "反刺甲片",
+            "icon": "fancijiapian",
+            "desc": "受到物理伤害有几率反弹魔法伤害"
+        },
+        {
+            "id": 18,
+            "name": "横扫之刃",
+            "icon": "hengsaozhiren",
+            "desc": "攻击时，有概率对前方扇形范围造成伤害"
+        },
+        {
+            "id": 19,
+            "name": "振奋",
+            "icon": "zhenfen",
+            "desc": "器伤低于500时将治疗数值固定"
+        },
+        {
+            "id": 20,
+            "name": "柔韧",
+            "icon": "rouren",
+            "desc": "最大生命值低于5000时将魔抗数值固定"
+        },
+        {
+            "id": 21,
+            "name": "反哺",
+            "icon": "fanbu",
+            "desc": "被攻击时有概率回复10格内2个友军生命"
+        },
+        {
+            "id": 22,
+            "name": "自然供养",
+            "icon": "zirangongyang",
+            "desc": "每十秒恢复自身体力"
+        },
+        {
+            "id": 23,
+            "name": "硬化",
+            "icon": "yinghua",
+            "desc": "减少所受的任何伤害"
+        },
+        {
+            "id": 24,
+            "name": "魔力咒文",
+            "icon": "molizhouwen",
+            "desc": "30秒根据法强恢复体力"
+        },
+        {
+            "id": 25,
+            "name": "冒险支配",
+            "icon": "maoxianzhipei",
+            "desc": "器伤低于500时普攻附带额外伤害"
+        },
+        {
+            "id": 26,
+            "name": "自由支配",
+            "icon": "ziyouzhipei",
+            "desc": "最大生命值低于5000且血量较低时每秒回复血量"
+        },
+        {
+            "id": 27,
+            "name": "粘液屏障",
+            "icon": "nianyepingzhang",
+            "desc": "被攻击时获得护盾，护盾值受护甲和魔抗影响（冷却60秒）"
+        },
+        {
+            "id": 28,
+            "name": "撕裂",
+            "icon": "silie",
+            "desc": "每第三次攻击时对前方线性5格内的敌人造成物理伤害"
+        },
+        {
+            "id": 29,
+            "name": "麻痹毒素",
+            "icon": "mabidusu",
+            "desc": "攻击时，有概率对前方5格内的5个目标造成中毒，使其受到持续魔法伤害"
+        },
+        {
+            "id": 30,
+            "name": "再生细胞",
+            "icon": "zaishengxibao1",
+            "desc": "被攻击时叠加层数，每100层回复最大生命值（冷却90秒）"
+        },
+        {
+            "id": 31,
+            "name": "愤怒器皿",
+            "icon": "fennuqimin",
+            "desc": "攻击时，叠加层数，100层时恢复自身生命值"
+        },
+        {
+            "id": 32,
+            "name": "爆炸毒孢",
+            "icon": "baozhadubao",
+            "desc": "攻击时投掷蘑菇并生成毒雾，每秒持续造成魔法伤害（冷却60秒）"
+        },
+        {
+            "id": 33,
+            "name": "诅咒炎弹",
+            "icon": "zuzhouyandan",
+            "desc": "每第三次攻击额外发射一颗造成魔法伤害的飞弹"
+        },
+        {
+            "id": 34,
+            "name": "毒液溅射",
+            "icon": "duyejianshe",
+            "desc": "每隔一段时间攻击对前方敌人造成持续中毒效果"
+        },
+        {
+            "id": 35,
+            "name": "援济",
+            "icon": "yuanji",
+            "desc": "每三次攻击治疗15格内一个友方生命"
+        },
+        {
+            "id": 36,
+            "name": "钢化体肤",
+            "icon": "ganghuatifu",
+            "desc": "被攻击时给予自己持续一段时间的伤害免减（60秒冷却）"
+        },
+        {
+            "id": 37,
+            "name": "旋风斩",
+            "icon": "xuanfengzhan",
+            "desc": "攻击时，有概率对自身周围5格8个目标造成物理伤害"
+        },
+        {
+            "id": 38,
+            "name": "腐蚀之毒",
+            "icon": "fushizhidu",
+            "desc": "每第三次攻击额外造成真实伤害"
+        },
+        {
+            "id": 39,
+            "name": "万物生长",
+            "icon": "wanwushengzhang",
+            "desc": "攻击时叠加层数，每100层治疗周围友军"
+        },
+        {
+            "id": 40,
+            "name": "倍化体魄",
+            "icon": "beihuatipo",
+            "desc": "被攻击时叠加层数，100层时增加最大生命值，持续30秒"
+        },
+        {
+            "id": 41,
+            "name": "风蚀",
+            "icon": "fengshi",
+            "desc": "器伤低于500时将法强数值固定"
+        },
+        {
+            "id": 42,
+            "name": "彻骨",
+            "icon": "chegu",
+            "desc": "物理伤害附加额外伤害"
+        },
+        {
+            "id": 43,
+            "name": "顽固组织",
+            "icon": "wanguzuzhi",
+            "desc": "物理抗性增加"
+        },
+        {
+            "id": 44,
+            "name": "毒性扩散",
+            "icon": "duxingkuosan",
+            "desc": "中毒伤害增加"
+        },
+        {
+            "id": 45,
+            "name": "锋利",
+            "icon": "fengli",
+            "desc": "器伤低于500时将攻击数值固定"
+        },
+        {
+            "id": 46,
+            "name": "喋血",
+            "icon": "diexue",
+            "desc": "攻击后回复自身生命（60秒冷却）"
+        },
+        {
+            "id": 47,
+            "name": "再生细胞",
+            "icon": "zaishengxibao2",
+            "desc": "最大生命值增加"
+        },
+        {
+            "id": 48,
+            "name": "穿刺注入",
+            "icon": "chuancizhuru",
+            "desc": "提升周期性伤害"
+        },
+        {
+            "id": 49,
+            "name": "捕猎唤醒",
+            "icon": "buliehuanxing",
+            "desc": "当自己生命值低时，攻击敌人会给予自身攻击和移速加成"
+        },
+        {
+            "id": 50,
+            "name": "生息",
+            "icon": "shengxi",
+            "desc": "治疗效率增加"
+        },
+        {
+            "id": 51,
+            "name": "碾压",
+            "icon": "nianya",
+            "desc": "受到攻击后有几率使下次攻击造成范围额外伤害"
+        },
+        {
+            "id": 52,
+            "name": "铁骨",
+            "icon": "tiegu",
+            "desc": "护盾效率增加"
+        },
+        {
+            "id": 53,
+            "name": "诅咒契约",
+            "icon": "zuzhouqiyue",
+            "desc": "下次攻击消耗自身生命并附带高额物理伤害（60秒冷却）"
+        }
+    ]
 }

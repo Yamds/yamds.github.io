@@ -9,42 +9,42 @@ import Simulation from '../pages/Simulation.vue'
 import Map from '../pages/Map.vue'
 
 let router = createRouter({
-    history:createWebHistory(),
+    history: createWebHistory(),
     routes: [
         {
             name: "materials-search",
             path: "/materials-search",
             component: MaterialsSearch,
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         },
         {
             name: "simulation",
             path: "/simulation",
             component: Simulation,
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         },
         {
             name: "map",
             path: "/map",
             component: Map,
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         },
         {
             name: "settings",
             path: "/settings",
             component: Settings,
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         },
         {
             name: "info",
             path: "/info",
             component: Info,
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         },
         {
             path: "/",
             redirect: "/materials-search",
-            meta: {KeepAlive: true}
+            meta: { KeepAlive: true }
         }
     ]
 })

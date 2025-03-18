@@ -8,17 +8,20 @@
     border-radius: 4px;
     font-size: 14px;
     user-select: none;
-    width: 100%;
 }
+
 .checkbox-left {
     justify-content: flex-start;
 }
+
 .checkbox-right {
     justify-content: flex-end;
 }
+
 .checkbox img {
     margin: 2px 4px;
 }
+
 .checkbox:hover {
     background-color: var(--ctp-surface0);
     transition: all 0.2s ease;

@@ -7,24 +7,22 @@
             <div class="row">
                 <SimulationShowCard />
                 <SimulationAdd />
-                
+
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-    export default {
-        name: "Simulation"
-    }
+export default {
+    name: "Simulation"
+}
 </script>
 
 <script lang="ts" setup>
-    import SimulationAdd from '../components/simulation/SimulationAdd.vue';
-    import SimulationList from '../components/simulation/SimulationList.vue';
-    import SimulationShowCard from '../components/simulation/SimulationShowCard.vue';
+import SimulationAdd from '../components/simulation/SimulationAdd.vue';
+import SimulationList from '../components/simulation/SimulationList.vue';
+import SimulationShowCard from '../components/simulation/SimulationShowCard.vue';
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "clipboard": "^2.0.11",

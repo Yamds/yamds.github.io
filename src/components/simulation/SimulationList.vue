@@ -26,10 +26,12 @@
                     <!-- <span>{{ index + 1 }}</span> -->
                     <img :src="`/img/armor/${item.armor.icon}.png`" alt="">
 
-                    <span v-show="!changeMode || useArmorStore().select_index != index" @click="changeModeClick(index)">{{ item.name
+                    <span v-show="!changeMode || useArmorStore().select_index != index"
+                        @click="changeModeClick(index)">{{ item.name
                         }}</span>
-                    <input type="text" v-model="input_name" v-if="changeMode && useArmorStore().select_index == index" @click.stop
-                        @focus="changeNameStart(item.name)" @blur="changeNameEnd(item)" @keydown.enter="changeNameEnd(item)">
+                    <input type="text" v-model="input_name" v-if="changeMode && useArmorStore().select_index == index"
+                        @click.stop @focus="changeNameStart(item.name)" @blur="changeNameEnd(item)"
+                        @keydown.enter="changeNameEnd(item)">
                 </div>
                 <div class="armor-list-right" @click="useArmorStore().deleteArmor(item.id)">
                     <span>x</span>
@@ -113,7 +115,7 @@ function addImportData() {
             armor: data.armor,
             material: data.material.map((m: any) => ({ material: m.material, star: m.star })) as SelectedArmorMaterialInter[]
         })
-        
+
         useArmorStore().selected_list = data.material.map((m: any) => m.material) as MaterialsInter[]
         useArmorStore().addArmorToList()
         useArmorStore().select_index = -1

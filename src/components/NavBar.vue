@@ -1,6 +1,6 @@
 <template>
     <!-- 导航栏 -->
-    <div class="navbar col-md-12">
+    <!-- <div class="navbar col-md-12">
         <ul>
             <li :class="{ active: active_web == 1 }">
                 <keep-alive>
@@ -28,7 +28,30 @@
                 </keep-alive>
             </li>
         </ul>
-    </div>
+    </div> -->
+    <el-row>
+        <el-cow :span="24">qwq</el-cow>
+        <el-cow :span="24">
+            <el-menu
+                active-text-color=var(--ctp-text)
+                background-color=var(--ctp-base)
+                class="el-menu-vertical-demo"
+                default-active="1"
+                text-color="#fff"
+            >
+            <el-menu-item index="1">
+                <el-icon><icon-menu /></el-icon>
+                    <keep-alive>
+                        <RouterLink :to="{ name: 'materials-search' }">查询材料</RouterLink>
+                    </keep-alive>
+                </el-menu-item>
+                <el-menu-item index="2">
+                <el-icon><icon-menu /></el-icon>
+                <span>Navigator Two</span>
+                </el-menu-item>
+            </el-menu>
+        </el-cow>
+    </el-row>
 </template>
 
 <script lang="ts">
@@ -84,7 +107,10 @@ watch(active_web, (value) => {
 </script>
 
 <style scoped>
-.navbar ul {
+.el-menu-vertical-demo>*:hover {
+    background-color: var(--ctp-surface1);
+}
+/* .navbar ul {
     border-bottom: 1px solid var(--ctp-custom);
     width: 100%;
     padding: 0;
@@ -120,5 +146,5 @@ watch(active_web, (value) => {
     border-bottom: none;
     box-shadow: 0 2px 0 0 var(--ctp-base);
     margin: 0 -1px;
-}
+} */
 </style>

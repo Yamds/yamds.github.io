@@ -4,6 +4,9 @@ import {createApp} from 'vue'
 import App from './App.vue'
 // 引入路由器
 import router from './router'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 import './assets/css/global.css'
 import './assets/css/theme.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,4 +25,5 @@ let pinia = createPinia()
 
 app.use(router)
 app.use(pinia)
+app.use(ElementPlus)
 app.mount("#app")

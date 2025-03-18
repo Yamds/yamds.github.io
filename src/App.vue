@@ -1,15 +1,30 @@
 <template>
     <div id="app" class="container-fluid">
         <Tips ref="tips" />
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-10 offset-1">
                 <h1 id="title">营火查询工具</h1>
-                <!-- <button @click="addTips('测试title', '测试tips', 'info')">添加tips</button>
-                <button @click="addTips('测asdaswertle', 'asdasddwqe', 'error')">添加error</button> -->
+                <button @click="addTips('测试title', '测试tips', 'info')">添加tips</button>
+                <button @click="addTips('测asdaswertle', 'asdasddwqe', 'error')">添加error</button>
                 <NavBar />
                 <RouterView></RouterView>
+                
             </div>
-        </div>
+        </div> -->
+        <el-container>
+            <el-aside>
+                <NavBar />
+            </el-aside>
+            <el-container>
+                <el-header>
+
+                </el-header>
+                <el-main>
+                    <RouterView></RouterView>
+                </el-main>
+            </el-container>
+            
+        </el-container>
     </div>
 </template>
 

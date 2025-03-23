@@ -13,19 +13,19 @@
 </template>
 
 <script lang="ts">
-    export default {
-        name: 'Tips'
-    }
+export default {
+    name: 'Tips'
+}
 </script>
 
 <script lang="ts" setup>
 import { ref, provide } from 'vue'
 
 let idCounter = 0
-let tips = ref<{ 
-    id: number, 
-    title: string, 
-    message: string, 
+let tips = ref<{
+    id: number,
+    title: string,
+    message: string,
     type: string,
     leaving?: boolean  // 新增leaving状态
 }[]>([])
@@ -91,6 +91,7 @@ defineExpose({ addTips })
     animation: slideIn 0.3s ease-out, fadeInScale 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+
 .tips.info {
     background-color: rgba(33, 150, 243, 0.7);
     border: 1px solid rgb(33, 150, 243);
@@ -110,6 +111,7 @@ defineExpose({ addTips })
     background-color: rgba(244, 67, 54, 0.7);
     border: 1px solid rgb(244, 67, 54);
 }
+
 .tips.leaving {
     animation: slideOut 0.3s ease-out, fadeOutScale 0.3s ease-out;
     opacity: 0;
